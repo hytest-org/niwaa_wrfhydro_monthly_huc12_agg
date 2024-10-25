@@ -8,7 +8,7 @@ This repository is dedicated to understanding pre-existing scripts provided by N
 
 Tasking can be tracked [here](https://github.com/hytest-org/hytest_internal/issues/47#issue-2468332257)
 
-Task Team members: lstaub4, amsnyder and @sfoks
+Task Team members: lstaub4, amsnyder and sfoks
 
 ## At a glance
 **NCAR_Scripts:** Folder containing unedited workflow from NCAR
