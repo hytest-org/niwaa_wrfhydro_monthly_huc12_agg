@@ -8,11 +8,43 @@ The scripts are set up to run individual years.
 ### Note! NCO is required for this step to run. 
 [netCDF Operator](https://nco.sourceforge.net/)
 
-Installing NCO on Hovenweep: 
+The computers at NCAR already have an NCO module set up that allows for easier installation. The USGS HPC's do not have this module set up....YET. Lee Lopaka and Parker Norton are looking into it.  
+
+#### Installing NCO on Hovenweep: 
+There are two methods. 
+1. Use already compiled module in Parker Norton's home directory.
+List all files in your home directory
+```
+ls -al
+```
+Open up your .bashrc file 
+```
+vim .bashrc
+```
+move your cursor to the bottom of the file and type 'a' to edit
+add this line to you file
+```
+module use /home/pnorton/privatemodules
+```
+Hit esc to exit edit mode
+type :wq to save and exit the file
+
+Log out of HPC and log back in. Navigate back to your home directory and load the nco module. NOTE: This command will need to be run each time you log into HPC and plan to use nco tools. 
+```
+module load nco
+```
+
+
+
+2. Install nco into an Anaconda environment
+```
+
+
+```
 
 
 > [!TIP]
-> Improvement: Eliminate need to install NCO independently. 
+> Improvement: Eliminate need to install NCO independently? 
 
 
 ## Step 2: Aggregations
