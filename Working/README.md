@@ -3,7 +3,12 @@
 ## Step 0: Prepping Datasets
 Convert NIWAA WRF-Hydro simulation from 3-hourly to into monthly time steps. 
 This process is done for each output type in the form of .sh scripts that can be run in command line.
-The scripts are set up to run individual years. 
+The scripts are set up to run individual water years. 
+
+The NIWAA WRF-Hydro files are available separated by calendar year (Jan-Dec). The shell scripts require the files to be separated by Water Year (Oct-Sep). This reorganization workflow was not provided by NCAR. 
+
+> [!TIP]
+> Improvement: Combine folder reorganization to water year step with hourly-monthly summary step. Or eliminate need to reorganize into water year in the first place?  
 
 ### Note! NCO is required for this step to run. 
 [netCDF Operator](https://nco.sourceforge.net/)
