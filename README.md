@@ -16,6 +16,11 @@ Task Team members: lstaub4, amsnyder and sfoks
 **Working:** Folder containing testing area of NCAR scripts
 
 
+# Summary table of NIWAA WRF-Hydro Output files used in this tutorial 
+both 3-hourly datasets and static datasets
+
+# Summary of HUC12 spatial fabric used
+
 
 
 
