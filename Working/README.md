@@ -8,7 +8,7 @@ The scripts are set up to run individual years.
 ### Note! NCO is required for this step to run. 
 [netCDF Operator](https://nco.sourceforge.net/)
 
-The computers at NCAR already have an NCO module set up that allows for easier installation. The USGS HPC's do not have this module set up....YET. Lee Lopaka and Parker Norton are looking into it.  
+The computers at NCAR already have an NCO module set up that allows for easier installation. The USGS HPC's do not have this module set up....YET. Lee Lopaka and Parker Norton are looking into nco to Hovenweep's list of pre-compiled modules.  
 
 #### Installing NCO on Hovenweep: 
 There are two methods. 
@@ -42,9 +42,40 @@ module load nco
 
 ```
 
-
 > [!TIP]
 > Improvement: Eliminate need to install NCO independently? 
+
+
+Once nco is loaded, Step 0 can begin. There are 4 shell scripts total, one for each of the WRF-Hydro outputs to be aggregated. 
+##### nco_process_ldasout.sh
+You will need to specify three paths: 
+  - The location of the 3-hourly WRF-Hydro output files.
+  - The location of the static soil properties file.
+  - The location of where to save the monthly outputs.
+##### nco_process_gwout.sh
+
+##### nco_process_clim.sh
+
+##### nco_process_chrtout.sh
+
+Once these details are modified in the shell script, they can be run using the following command- specifying which year to run the process on: 
+```
+./nco_process_ldasout.sh 2009
+```
+In order for the above command to run, I have to edit permission for the shell script: 
+```
+chmod +x /path/to/yourscript.sh
+```
+
+
+
+
+> [!TIP]
+> Improvement: Two thoughts on this process
+> 1. Keep this process as shell scripts, but find a way to specify it to run on more than 1 year.
+> 2. convert to python notebook using coarsen package? 
+
+
 
 
 ## Step 2: Aggregations
