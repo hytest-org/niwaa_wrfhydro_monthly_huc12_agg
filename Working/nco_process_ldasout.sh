@@ -7,7 +7,7 @@
 #        year to process
 #        e.g., ./nco_process_ldasout.sh 2009
 # Developed: 06/11/2024, A. Dugger
-# Updated: 
+# Updated: 11/1/2024, L. Staub
 ############################################################################
 
 ############################################################################
@@ -15,12 +15,19 @@
 
 # Specify WRF-Hydro output directory:
 # (assumes files are organized by water year)
-indir_base="/path/to/input/files/"
-soilparm="/path/to/soil_properties_file.nc"
+#indir_base="/path/to/input/files/"
+#soilparm="/path/to/soil_properties_file.nc"
+
+indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/subset_niwaa_wrfhydro_hr/LDASOUT/"
+soilparm="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_soil_properties_CONUS_1km_NIWAAv1.0.nc"
+
 
 # Specify output directory where monthly files should be written:
 # (output files will be named water_YYYYMM.nc)
-outdir="/path/to/monthly/output/files/"
+#outdir="/path/to/monthly/output/files/"
+
+outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/subset_niwaa_wrfhydro_mo/LDASOUT/"
+
 
 ############################################################################
 
