@@ -26,7 +26,7 @@ soilparm="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_mont
 # (output files will be named water_YYYYMM.nc)
 #outdir="/path/to/monthly/output/files/"
 
-outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/subset_niwaa_wrfhydro_mo/LDASOUT/"
+outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/subset_niwaa_wrfhydro_mo/LDASOUT"
 
 
 ############################################################################
@@ -45,7 +45,8 @@ mkdir $outdir
 
 # Process porosity and wilting point parameters for use in soilsat calculations.
 # These parameters are currently uniform over depth layers.
-rm ${tmpfile}
+#the two lines below could not run because the tmpfile and paramfile do not exist??
+rm ${tmpfile} 
 rm ${paramfile}
 ncks -A -v smcmax,smcwlt $soilparm ${paramfile}
 ncrename -O -d south_north,y ${paramfile} ${paramfile}
@@ -71,7 +72,7 @@ for mo in $(seq 1 1 12); do
   fi
 
   # Setup input directory and output filename.
-  indir="${indir_base}/WY${wy_yr}/"
+  indir="${indir_base}/WY${wy_yr}/" 
   outfile="${outdir}/water_${YYYY}${MM}.nc"
   rm $outfile
 
