@@ -1,37 +1,45 @@
 #!/bin/bash
 
-# Define the base directory containing calendar year folders
-#BASE_DIR="/path/to/calendar/years"
+# Set the directory where files are organized by calendar year
+SOURCE_DIR="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_niwaa_wrfhydro_hr/LDASOUT"
 
-BASE_DIR="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/subset_niwaa_wrfhydro_hr/LDASOUT"
+echo "Beginning of loop"
 
+# Loop through each calendar year folder in SOURCE_DIR
+for year_dir in "$SOURCE_DIR"/*/; do
+    # Get the calendar year from the folder name
+    calendar_year=$(basename "$year_dir")
+    
+    # Loop through each file in the calendar year folder
+    for file in "$year_dir"*; do
+        # Skip if it's not a file
+        [[ -f "$file" ]] || continue
 
-# Loop through each calendar year folder
-for CAL_YEAR in "$BASE_DIR"/*; do
-    # Check if it's a directory
-    if [ -d "$CAL_YEAR" ]; then
-        # Extract the year from the directory name
-        YEAR=$(basename "$CAL_YEAR")
+        # Extract the date from the filename (assuming format YYYYMMDD)
+        filename=$(basename "$file")
+        file_date="${filename:0:8}"  # First 8 characters are YYYYMMDD
+        
+        # Parse year, month, and day
+        file_year=${file_date:0:4}
+        file_month=${file_date:4:2}
+        file_day=${file_date:6:2}
 
-        # Determine the water year
-        if (( 10#$YEAR < 10 )); then
-            WATER_YEAR="20$(( YEAR + 1 ))"
+        # Determine water year
+        if [[ $file_month -ge 10 ]]; then
+            # October or later, it belongs to the next calendar year's water year
+            water_year=$((file_year + 1))
         else
-            WATER_YEAR="$(( YEAR + 1 ))"
+            # Earlier months belong to the current calendar year's water year
+            water_year=$file_year
         fi
 
-        # Create the water year folder if it doesn't exist
-        WATER_YEAR_DIR="$BASE_DIR/water_years/$WATER_YEAR"
-        mkdir -p "$WATER_YEAR_DIR"
+        # Create target directory for the water year if it doesn't exist
+        target_year_dir="$SOURCE_DIR/$water_year"
+        mkdir -p "$target_year_dir"
 
-        # rename files to have WY prefix
-	new_filename = "WY_$(basename "CAL_YEAR")"
-
-        # Move files to the appropriate water year folder
-        mv "$CAL_YEAR"/* "$WATER_YEAR_DIR/$new_filename"
-        
-        echo "Moved and renamed files from $CAL_YEAR to $WATER_YEAR_DIR"
-    fi
+        # Add "WY_" prefix and copy the file to the water year folder
+        cp "$file" "$target_year_dir/WY_$filename"
+    done
 done
 
-
+echo "Files have been copied and renamed with 'WY_' prefix in folders organized by water year."
