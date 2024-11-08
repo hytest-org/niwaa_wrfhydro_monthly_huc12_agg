@@ -24,10 +24,14 @@ for CAL_YEAR in "$BASE_DIR"/*; do
         WATER_YEAR_DIR="$BASE_DIR/water_years/$WATER_YEAR"
         mkdir -p "$WATER_YEAR_DIR"
 
+        # rename files to have WY prefix
+	new_filename = "WY_$(basename "CAL_YEAR")"
+
         # Move files to the appropriate water year folder
-        mv "$CAL_YEAR"/* "$WATER_YEAR_DIR/"
+        mv "$CAL_YEAR"/* "$WATER_YEAR_DIR/$new_filename"
         
-        echo "Moved files from $CAL_YEAR to $WATER_YEAR_DIR"
+        echo "Moved and renamed files from $CAL_YEAR to $WATER_YEAR_DIR"
     fi
 done
+
 
