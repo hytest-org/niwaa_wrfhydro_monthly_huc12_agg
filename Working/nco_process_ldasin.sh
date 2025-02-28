@@ -5,9 +5,9 @@
 #               https://nco.sourceforge.net/
 # Usage: Call shell script with a single argument specifying the 4-digit
 #        year to process
-#        e.g., ./nco_process_clim.sh 2009
+#        e.g., ./nco_process_ldasin.sh 2009
 # Developed: 06/11/2024, A. Dugger
-# Updated: 
+# Updated: 2/18/2025, L. Staub
 ############################################################################
 
 ############################################################################
@@ -15,11 +15,15 @@
 
 # Specify input forcing directory:
 # (assumes forcings are organized by water year)
-indir_base="/path/to/met/forcings/"
+#indir_base="/path/to/met/forcings/"
+
+indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASIN_hr"
 
 # Specify output directory where monthly files should be written:
 # (output files will be named clim_YYYYMM.nc)
-outdir="/path/to/monthly/output/files/"
+#outdir="/path/to/monthly/output/files/"
+
+outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASIN_mo"
 
 ############################################################################
 
