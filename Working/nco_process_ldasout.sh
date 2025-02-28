@@ -7,7 +7,7 @@
 #        year to process
 #        e.g., ./nco_process_ldasout.sh 2009
 # Developed: 06/11/2024, A. Dugger
-# Updated: 11/1/2024, L. Staub
+# Updated: 2/18/2025, L. Staub
 ############################################################################
 
 ############################################################################
@@ -18,16 +18,24 @@
 #indir_base="/path/to/input/files/"
 #soilparm="/path/to/soil_properties_file.nc"
 
-indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/subset_niwaa_wrfhydro_hr/LDASOUT/"
-soilparm="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_soil_properties_CONUS_1km_NIWAAv1.0.nc"
+indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASOUT_hr"
+soilparm="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_soil_properties_CONUS_1km_NIWAAv1.0.nc"
 
 
 # Specify output directory where monthly files should be written:
 # (output files will be named water_YYYYMM.nc)
 #outdir="/path/to/monthly/output/files/"
 
-outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations/subset_niwaa_wrfhydro_mo/LDASOUT"
+outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASOUT_mo"
 
+# Check if the folder exists/create one
+if [ ! -d "$outdir" ]; then
+    # Create the folder
+    mkdir -p "$outdir"
+    echo "Folder created: $outdir"
+else
+    echo "Folder already exists: $outdir"
+fi
 
 ############################################################################
 
@@ -41,7 +49,6 @@ uniqid=`uuidgen`
 tmpfile=tmp${uniqid}.nc
 paramfile=params${uniqid}.nc
 
-mkdir $outdir
 
 # Process porosity and wilting point parameters for use in soilsat calculations.
 # These parameters are currently uniform over depth layers.
@@ -65,14 +72,8 @@ for mo in $(seq 1 1 12); do
   echo "  Processing month ${mo}"
   MM=`printf %02d ${mo}`
 
-  # Calculate water year for finding folder name.
-  wy_yr=${yr}
-  if [ "${mo}" -ge 10 ]; then
-     wy_yr=`echo "${wy_yr} + 1" | bc`
-  fi
-
   # Setup input directory and output filename.
-  indir="${indir_base}/WY${wy_yr}/" 
+  indir="${indir_base}/RAW${yr}" 
   outfile="${outdir}/water_${YYYY}${MM}.nc"
   rm $outfile
 
@@ -84,8 +85,8 @@ for mo in $(seq 1 1 12); do
   # Resets happen at 00Z on the first day of month every 3 months
   # e.g., 197904010300.LDASOUT_DOMAIN1 to 197904302100.LDASOUT_DOMAIN1
   last_file_datetime=`date -d "${YYYY}${MM}01 + 1 month - 3 hour" +%Y%m%d%H`
-  firstfile=`echo ${indir}/${YYYY}${MM}010000.LDASOUT_DOMAIN1.comp`
-  lastfile=`echo ${indir}/${last_file_datetime}00.LDASOUT_DOMAIN1.comp`
+  firstfile=`echo ${indir}/${YYYY}${MM}010000.LDASOUT_DOMAIN1`
+  lastfile=`echo ${indir}/${last_file_datetime}00.LDASOUT_DOMAIN1`
 
   echo "      $firstfile $lastfile"
 
@@ -113,8 +114,8 @@ for mo in $(seq 1 1 12); do
     # Processing mean states
     # Averaging from 00Z of first day or month to 21Z of last day of month
     # Compiling list of files
-    # e.g., 200506150500.LDASOUT_DOMAIN1.comp
-    infiles=(${indir}/${YYYY}${MM}*.LDASOUT_DOMAIN1.comp)
+    # e.g., 200506150500.LDASOUT_DOMAIN1
+    infiles=(${indir}/${YYYY}${MM}*.LDASOUT_DOMAIN1)
     infiles_list=`echo "${infiles[*]}"`
     count=${#infiles[@]}
     echo "      Processing means"
