@@ -13,10 +13,10 @@ The NIWAA WRF-Hydro files are available separated by calendar year (Jan-Dec). Th
 ### Note! NCO is required for this step to run. 
 [netCDF Operator](https://nco.sourceforge.net/)
 
-The computers at NCAR already have an NCO module set up that allows for easier installation. The USGS HPC's do not have this module set up....YET. Lee Lopaka and Parker Norton are looking into nco to Hovenweep's list of pre-compiled modules.  
+The computers at NCAR already have an NCO module set up that allows for easier installation. The USGS HPC Hovenweep has this set up in the impd group. Users must be apart of impd group to access.   
 
 #### Installing NCO on Hovenweep: 
-There are two methods. 
+There are three methods. 
 1. Use already compiled module in Parker Norton's home directory.
 List all files in your home directory
 ```
@@ -39,9 +39,13 @@ Log out of HPC and log back in. Navigate back to your home directory and load th
 module load nco
 ```
 
+2. Use already compiled module in impd group
+```
+module load nco
+```
 
 
-2. Install nco into an Anaconda environment
+4. Install nco into an Anaconda environment
 ```
 
 
