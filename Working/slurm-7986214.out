@@ -1,0 +1,18 @@
+2025-03-12 12:40:10,802 - distributed.nanny - INFO -         Start Nanny at: 'tcp://172.26.1.36:41235'
+2025-03-12 12:40:11,570 - distributed.diskutils - INFO - Found stale lock file and directory '/tmp/dask-scratch-space-84860/worker-3wfvrqll', purging
+2025-03-12 12:40:11,571 - distributed.diskutils - INFO - Found stale lock file and directory '/tmp/dask-scratch-space-84860/worker-uq85l9s5', purging
+2025-03-12 12:40:12,362 - distributed.worker - INFO -       Start worker at:    tcp://172.26.1.36:45065
+2025-03-12 12:40:12,362 - distributed.worker - INFO -          Listening to:    tcp://172.26.1.36:45065
+2025-03-12 12:40:12,362 - distributed.worker - INFO -           Worker name:             SLURMCluster-0
+2025-03-12 12:40:12,362 - distributed.worker - INFO -          dashboard at:          172.26.1.36:34013
+2025-03-12 12:40:12,362 - distributed.worker - INFO - Waiting to connect to:   tcp://172.26.1.154:33251
+2025-03-12 12:40:12,362 - distributed.worker - INFO - -------------------------------------------------
+2025-03-12 12:40:12,362 - distributed.worker - INFO -               Threads:                          1
+2025-03-12 12:40:12,362 - distributed.worker - INFO -                Memory:                   9.31 GiB
+2025-03-12 12:40:12,362 - distributed.worker - INFO -       Local Directory: /tmp/dask-scratch-space-84860/worker-mujwwgn2
+2025-03-12 12:40:12,363 - distributed.worker - INFO - -------------------------------------------------
+2025-03-12 12:40:13,022 - distributed.worker - INFO - Starting Worker plugin shuffle
+2025-03-12 12:40:13,023 - distributed.worker - INFO -         Registered to:   tcp://172.26.1.154:33251
+2025-03-12 12:40:13,023 - distributed.worker - INFO - -------------------------------------------------
+2025-03-12 12:40:13,024 - distributed.core - INFO - Starting established connection to tcp://172.26.1.154:33251
+slurmstepd: error: *** JOB 7986214 ON cn024 CANCELLED AT 2025-03-12T13:40:30 DUE TO TIME LIMIT ***

@@ -13,3 +13,4 @@
 2025-03-12 11:39:45,985 - distributed.worker - INFO -         Registered to:   tcp://172.26.1.154:33251
 2025-03-12 11:39:45,985 - distributed.worker - INFO - -------------------------------------------------
 2025-03-12 11:39:45,987 - distributed.core - INFO - Starting established connection to tcp://172.26.1.154:33251
+slurmstepd: error: *** JOB 7984888 ON cn024 CANCELLED AT 2025-03-12T12:39:50 DUE TO TIME LIMIT ***

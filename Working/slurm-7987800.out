@@ -1,0 +1,18 @@
+2025-03-12 13:45:01,899 - distributed.nanny - INFO -         Start Nanny at: 'tcp://172.26.1.35:46663'
+2025-03-12 13:45:03,298 - distributed.diskutils - INFO - Found stale lock file and directory '/tmp/dask-scratch-space/worker-i_22pke_', purging
+2025-03-12 13:45:08,102 - distributed.worker - INFO -       Start worker at:    tcp://172.26.1.35:35581
+2025-03-12 13:45:08,102 - distributed.worker - INFO -          Listening to:    tcp://172.26.1.35:35581
+2025-03-12 13:45:08,102 - distributed.worker - INFO -           Worker name:             SLURMCluster-0
+2025-03-12 13:45:08,102 - distributed.worker - INFO -          dashboard at:          172.26.1.35:34337
+2025-03-12 13:45:08,102 - distributed.worker - INFO - Waiting to connect to:   tcp://172.26.1.154:35667
+2025-03-12 13:45:08,102 - distributed.worker - INFO - -------------------------------------------------
+2025-03-12 13:45:08,102 - distributed.worker - INFO -               Threads:                          1
+2025-03-12 13:45:08,102 - distributed.worker - INFO -                Memory:                   9.31 GiB
+2025-03-12 13:45:08,103 - distributed.worker - INFO -       Local Directory: /tmp/dask-scratch-space/worker-z3xneotf
+2025-03-12 13:45:08,103 - distributed.worker - INFO - -------------------------------------------------
+2025-03-12 13:45:13,441 - distributed.worker - INFO - Starting Worker plugin shuffle
+2025-03-12 13:45:13,442 - distributed.worker - INFO -         Registered to:   tcp://172.26.1.154:35667
+2025-03-12 13:45:13,442 - distributed.worker - INFO - -------------------------------------------------
+2025-03-12 13:45:13,443 - distributed.core - INFO - Starting established connection to tcp://172.26.1.154:35667
+2025-03-12 13:56:36,494 - distributed.worker - INFO - Stopping worker at tcp://172.26.1.35:35581. Reason: scheduler-close
+slurmstepd: error: *** JOB 7987800 ON cn023 CANCELLED AT 2025-03-12T13:56:36 ***
