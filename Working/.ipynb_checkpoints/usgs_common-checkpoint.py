@@ -53,8 +53,7 @@ geogrid_SM = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_
 
 # NWM Fulldom_hires netCDF file - contains routing variables on the routing grid
 #fulldom = r'/glade/work/jamesmcc/domains/private/CONUS_v2.1_final/NWM/DOMAIN/Fulldom_hires_netcdf_file_250m_FullRouting_NWMv2.1.nc'
-fulldom = 
-r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_Fulldom_CONUS_250m_NIWAAv1.0.nc'
+fulldom = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_Fulldom_CONUS_250m_NIWAAv1.0.nc'
 
 #r'/glade/p/cisl/nwc/nwmv30_calibration/regionalization/NWM_V3_retro_MixMatch/Fulldom_hires_netcdf_file_250m_NWMv3.0_CombByHUC8.nc'  #v3.0
 
