@@ -91,23 +91,23 @@ soil_props = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_
 
 #Does the workflow write these out?? Need to find which script does this. 
 # LDASOUT LWM grid output Zarr
-ldasout_zarr = r'/glade/campaign/ncar/USGS_Water/NWMV21_retro_zarr/ldasout.zarr'
+ldasout_zarr = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/zarrs/ldasout.zarr'
 
 # Groundwater output Zarr
-gwout_zarr = r'/glade/campaign/ncar/USGS_Water/NWMV21_retro_zarr/gwout.zarr'
+gwout_zarr = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/zarrs/gwout.zarr'
 
 # CHGROUT channel reach output Zarr
-chrtout_zarr = r'/glade/campaign/ncar/USGS_Water/NWMV21_retro_zarr/chrtout.zarr'
-chrtout_zarr_reprocess = r'/glade/campaign/ncar/USGS_Water/NWMV21_retro_zarr_reprocess/chrtout.zarr'
+chrtout_zarr = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/zarrs/chrtout.zarr'
+chrtout_zarr_reprocess = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/zarrs/chrtout_re.zarr'
 
 # RTOUT routing grid output Zarr
-rtout_zarr = r'/glade/campaign/ncar/USGS_Water/NWMV21_retro_zarr/rtout.zarr'
+rtout_zarr = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/zarrs/rtout.zarr'
 
 # LAKEOUT lake output Zarr
-lakeout_zarr = r'/glade/campaign/ncar/USGS_Water/NWMV21_retro_zarr/lakeout.zarr'
+lakeout_zarr = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/zarrs/lakeout.zarr'
 
 # Precipitation Zarr files
-precip_zarr = r'/glade/campaign/ncar/USGS_Water/NWMV21_retro_zarr/precip.zarr'
+precip_zarr = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/zarrs/precip.zarr'
 
 # --- End Retrospective model output files --- #
 
