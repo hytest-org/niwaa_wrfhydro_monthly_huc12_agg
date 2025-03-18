@@ -1,5 +1,5 @@
 #!/bin/bash
-############################################################################
+# ###########################################################################
 # Bash shell script to create monthly aggregates of WRF-Hydro forcing files.
 # Requirements: NCO (tested with version 5.1.4)
 #               https://nco.sourceforge.net/
@@ -7,30 +7,30 @@
 #        year to process
 #        e.g., ./nco_process_clim.sh 2009
 # Developed: 06/11/2024, A. Dugger
-# Updated: 2/19/2025 L. Staub
-############################################################################
+# Updated: 
+# ###########################################################################
 
-############################################################################
+# ###########################################################################
 # USER-SPECIFIED INPUTS:
 
 # Specify input forcing directory:
 # (assumes forcings are organized by water year)
-#indir_base="/path/to/met/forcings/"
+# indir_base="/path/to/met/forcings/"
 
 indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASIN_hr"
 
 # Specify output directory where monthly files should be written:
 # (output files will be named clim_YYYYMM.nc)
-#outdir="/path/to/monthly/output/files/"
+# outdir="/path/to/monthly/output/files/"
 
 outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASIN_mo"
 
 
-############################################################################
+# ###########################################################################
 
-############################################################################
+# ###########################################################################
 # MAIN CODE. Probably no need to update anything below here.
-############################################################################
+# ###########################################################################
 
 # Initial setup.
 shopt -s nullglob
