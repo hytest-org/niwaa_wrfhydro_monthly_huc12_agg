@@ -58,15 +58,15 @@ chmod +x /path/to/yourscript.sh
 ```
 Launch slurm script with an array of years of interest, 2011-2013 is used here. 
 ```
-sbatch –array=2011-2013 ldasout_nco.slurm
+sbatch --array=2011-2013 ldasout_nco.slurm
 ```
 To check on the status of slurm request:
 ```
-squeue -me
+squeue -u <username>
 ```
 If you need to cancel the request: 
 ```
-scancel
+scancel <jobid>
 ```
 
 

@@ -57,7 +57,7 @@ for mo in $(seq 1 1 12); do
 
   # Compiling list of files
   # e.g., 200506150500.CHRTOUT_DOMAIN1.comp
-  infiles=(${indir}/${YYYY}${MM}*.CHRTOUT_DOMAIN1.comp)
+  infiles=(${indir}/${YYYY}${MM}*.CHRTOUT_DOMAIN1)
   count=${#infiles[@]}
   echo "      Found $count files"
 
