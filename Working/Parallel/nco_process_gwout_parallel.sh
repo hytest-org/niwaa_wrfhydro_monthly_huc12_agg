@@ -105,7 +105,7 @@ for mo in $(seq 1 1 12); do
     ncrename -h -v depth,deltaDepth ${outfile}
 
     # Compiling list of files
-    # e.g., 200506150500.GWOUT_DOMAIN1.comp
+    # e.g., 200506150500.GWOUT_DOMAIN1
     infiles=(${indir}/${YYYY}${MM}*.GWOUT_DOMAIN1)
     infiles_list=`echo "${infiles[*]}"`
     count=${#infiles[@]}
