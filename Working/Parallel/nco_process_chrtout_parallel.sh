@@ -16,12 +16,22 @@
 # Specify WRF-Hydro output directory:
 # (assumes files are organized by water year)
 #indir_base="/path/to/input/files/" 
-indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_CHRTOUT_hr
+indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_CHRTOUT_hr"
 
 # Specify output directory where monthly files should be written:
 # (output files will be named chrt_YYYYMM.nc)
 #outdir="/path/to/monthly/output/files/"
-indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_CHRTOUT_mo
+outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_CHRTOUT_mo"
+
+# Check if the folder exists/create one
+if [ ! -d "$outdir" ]; then
+    # Create the folder
+    mkdir -p "$outdir"
+    echo "Folder created: $outdir"
+else
+    echo "Folder already exists: $outdir"
+fi
+
 
 # ###########################################################################
 
@@ -31,7 +41,7 @@ indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrf
 
 # Initial setup.
 shopt -s nullglob
-mkdir $outdir
+
 
 # Get the year to process from the command line argument.
 # This setup is useful for scripting loops by year.

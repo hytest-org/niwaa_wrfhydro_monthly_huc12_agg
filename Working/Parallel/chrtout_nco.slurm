@@ -12,7 +12,7 @@
 
 #SBATCH -p cpu  			  # set partition
 #SBATCH -A impd 		  	  # set account
-#SBATCH --job-name=ldasin_nco             # Job name
+#SBATCH --job-name=chrtout_nco             # Job name
 #SBATCH --nodes=1                         # Number of nodes (adjust as needed)
 #SBATCH --ntasks=1                        # Number of tasks (one task per node/year)
 #SBATCH --cpus-per-task=1                 # CPUs per task (adjust as needed)
