@@ -109,6 +109,11 @@ for mo in $(seq 1 1 12); do
     infiles=(${indir}/${YYYY}${MM}*.GWOUT_DOMAIN1)
     infiles_list=`echo "${infiles[*]}"`
     count=${#infiles[@]}
+    # Rename the variable "depth" to "bucket_depth" in all files before processing
+    echo "      Renaming 'depth' to 'bucket_depth' in input files"
+    for infile in "${infiles[@]}"; do
+        ncrename -h -v depth,bucket_depth "${infile}"
+    done
     echo "      Processing sums and means"
     echo "        found $count files"
     echo "        first ${infiles[0]}"

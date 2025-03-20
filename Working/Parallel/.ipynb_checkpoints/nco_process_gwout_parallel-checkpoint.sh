@@ -89,8 +89,8 @@ for mo in $(seq 1 1 12); do
   start_time=`date -u +%s`
 
   # Processing accumulated flux and state diffs
-  firstfile=`echo ${indir}/${YYYY}${MM}010100.GWOUT_DOMAIN1.comp`
-  lastfile=`echo ${indir_next}/${YYYY2}${MM2}010000.GWOUT_DOMAIN1.comp`
+  firstfile=`echo ${indir}/${YYYY}${MM}010100.GWOUT_DOMAIN1`
+  lastfile=`echo ${indir_next}/${YYYY2}${MM2}010000.GWOUT_DOMAIN1`
 
   echo "      $firstfile $lastfile"
 
@@ -105,10 +105,15 @@ for mo in $(seq 1 1 12); do
     ncrename -h -v depth,deltaDepth ${outfile}
 
     # Compiling list of files
-    # e.g., 200506150500.GWOUT_DOMAIN1.comp
-    infiles=(${indir}/${YYYY}${MM}*.GWOUT_DOMAIN1.comp)
+    # e.g., 200506150500.GWOUT_DOMAIN1
+    infiles=(${indir}/${YYYY}${MM}*.GWOUT_DOMAIN1)
     infiles_list=`echo "${infiles[*]}"`
     count=${#infiles[@]}
+    # Rename the variable "depth" to "bucket_depth" in all files before processing
+    echo "      Renaming 'depth' to 'bucket_depth' in input files"
+    for infile in "${infiles[@]}"; do
+        ncrename -h -v depth,bucket_depth "${infile}"
+    done
     echo "      Processing sums and means"
     echo "        found $count files"
     echo "        first ${infiles[0]}"
