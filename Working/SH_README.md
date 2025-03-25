@@ -18,16 +18,26 @@ NOTE FOR LES: The shell scripts are set up as though they can be run for 1 year 
 ## Script Preparations:
 ##### nco_process_ldasout.sh
 You will need to specify three paths: 
-  - The location of the 3-hourly WRF-Hydro output files.
+  - The location of the 3-hourly WRF-Hydro output LDASOUT files.
   - The location of the static soil properties file.
   - The location of where to save the monthly outputs.
-##### nco_process_gwout.sh
 
+##### nco_process_gwout.sh
+You will need to specify two paths: 
+  - The location of the hourly WRF-Hydro output GWOUT files.
+  - The location of where to save the monthly outputs.
+*Note: this script has some additional lines of code to deal with filetypes in the depth variable. Renaming the variable seems to fix this bug. Another option is to use older version of the NCO module- this has not been explored yet.
 
 ##### nco_process_clim.sh
+You will need to specify two paths: 
+  - The location of the hourly CONUS404-BA output LDASIN files.
+  - The location of where to save the monthly outputs.
+*Note: this script has some additional lines of code to deal with this data being organized by Water Year.
 
 ##### nco_process_chrtout.sh
-
+You will need to specify two paths: 
+  - The location of the hourly WRF-Hydro output CHRTOUT files.
+  - The location of where to save the monthly outputs.
   
 ## One Year at a Time: 
 

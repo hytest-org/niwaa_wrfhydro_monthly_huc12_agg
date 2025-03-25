@@ -1,101 +1,86 @@
-# HyTEST Notes:
+# Hourly to Monthly Workflow
 
-## Step 0: Prepping Datasets
-Convert NIWAA WRF-Hydro simulation from 3-hourly to into monthly time steps. 
-This process is done for each output type in the form of .sh scripts that can be run in command line.
-The scripts are set up to run individual water years. 
+## Overview
+NCO is required for this workflow: [netCDF Operator](https://nco.sourceforge.net/). USGS HPC Hovenweep has an NCO module set up that needs to be loaded before the workflow is run. 
 
-The NIWAA WRF-Hydro files are available separated by calendar year (Jan-Dec). The shell scripts require the files to be separated by Water Year (Oct-Sep). This reorganization workflow was not provided by NCAR. 
+To keep processing times low, this workflow has been parallelized. There are 4 variables that need to be converted from hourly to monthly: LDASOUT, LDASIN, CHRTOUT, and GWOUT. Each variable has a shell script that does the hourly to monthly calculations. These can be run for a single year or called into a slurm file to run multiple years at once. 
 
-> [!TIP]
-> Improvement: Combine folder reorganization to water year step with hourly-monthly summary step. Or eliminate need to reorganize into water year in the first place?  
+| **Source** | **Variable** | **File Structure** | **Time Step** | **Shell Script** | **Slurm file** |
+| ------ | ------ | ------ | ------ | ------ | ------ |
+| WRF-Hydro | LDASOUT | Calendar Year | 3-hourly | nco_process_ldasout.sh | ldasout_nco.slurm |
+| CONUS404-BA | LDASIN | Water Year | hourly | nco_process_clim.sh | clim_nco.slurm |
+| WRF-Hydro | GWOUT | Calendar Year | hourly | nco_process_gwout.sh | gwout_nco.slurm |
+| WRF-Hydro | CHRTOUT | Calendar Year | hourly | nco_process_chrtout.sh | chrtout_nco.slurm |
 
-### Note! NCO is required for this step to run. 
-[netCDF Operator](https://nco.sourceforge.net/)
 
-The computers at NCAR already have an NCO module set up that allows for easier installation. The USGS HPC's do not have this module set up....YET. Lee Lopaka and Parker Norton are looking into nco to Hovenweep's list of pre-compiled modules.  
+NOTE FOR LES: The shell scripts are set up as though they can be run for 1 year or called into a slurm script. We don't need to have two versions of the same shell script. Need to rename these files and reorganize them.  
 
-#### Installing NCO on Hovenweep: 
-There are two methods. 
-1. Use already compiled module in Parker Norton's home directory.
-List all files in your home directory
-```
-ls -al
-```
-Open up your .bashrc file 
-```
-vim .bashrc
-```
-move your cursor to the bottom of the file and type 'a' to edit
-add this line to you file
-```
-module use /home/pnorton/privatemodules
-```
-Hit esc to exit edit mode
-type :wq to save and exit the file
+## Script Preparations:
+##### nco_process_ldasout.sh
+You will need to specify three paths: 
+  - The location of the 3-hourly WRF-Hydro output LDASOUT files.
+  - The location of the static soil properties file.
+  - The location of where to save the monthly outputs.
 
-Log out of HPC and log back in. Navigate back to your home directory and load the nco module. NOTE: This command will need to be run each time you log into HPC and plan to use nco tools. 
+##### nco_process_gwout.sh
+You will need to specify two paths: 
+  - The location of the hourly WRF-Hydro output GWOUT files.
+  - The location of where to save the monthly outputs.
+*Note: this script has some additional lines of code to deal with filetypes in the depth variable. Renaming the variable seems to fix this bug. Another option is to use older version of the NCO module- this has not been explored yet.
+
+##### nco_process_clim.sh
+You will need to specify two paths: 
+  - The location of the hourly CONUS404-BA output LDASIN files.
+  - The location of where to save the monthly outputs.
+*Note: this script has some additional lines of code to deal with this data being organized by Water Year.
+
+##### nco_process_chrtout.sh
+You will need to specify two paths: 
+  - The location of the hourly WRF-Hydro output CHRTOUT files.
+  - The location of where to save the monthly outputs.
+  
+## One Year at a Time: 
+
+Load netcdf operator
 ```
 module load nco
 ```
+Ensure paths in shell script are correct. 
 
-
-
-2. Install nco into an Anaconda environment
-```
-
-
-```
-
-> [!TIP]
-> Improvement: Eliminate need to install NCO independently? 
-
-
-Once nco is loaded, Step 0 can begin. There are 4 shell scripts total, one for each of the WRF-Hydro outputs to be aggregated. 
-##### nco_process_ldasout.sh
-You will need to specify three paths: 
-  - The location of the 3-hourly WRF-Hydro output files.
-  - The location of the static soil properties file.
-  - The location of where to save the monthly outputs.
-##### nco_process_gwout.sh
-
-##### nco_process_clim.sh
-
-##### nco_process_chrtout.sh
-
-Once these details are modified in the shell script, they can be run using the following command- specifying which year to run the process on: 
-```
-./nco_process_ldasout.sh 2009
-```
-In order for the above command to run, I have to edit permission for the shell script: 
+Allow edit permission for the shell script:
 ```
 chmod +x /path/to/yourscript.sh
 ```
+Run the shell script. 
+```
+./nco_process_ldasout.sh 2009
+```
+Repeat for other variables. 
 
 
 
+## Multiple Years at Once: 
 
-> [!TIP]
-> Improvement: Two thoughts on this process
-> 1. Keep this process as shell scripts, but find a way to specify it to run on more than 1 year.
-> 2. convert to python notebook using coarsen package? 
+Ensure paths in shell script and slurm file are correct. 
+
+Allow edit permission for the shell script:
+```
+chmod +x /path/to/yourscript.sh
+```
+Launch slurm script with an array of years of interest, 2011-2013 is used here. 
+```
+sbatch --array=2011-2013 ldasout_nco.slurm
+```
+To check on the status of slurm request:
+```
+squeue -u <username>
+```
+If you need to cancel the request: 
+```
+scancel <jobid>
+```
 
 
-
-
-## Step 2: Aggregations
-Aggregate monthly WRF-Hydro monthly simulations to HUC12 catchments. 
-
-### Note: the model inputs have different grid resoultions 
-There are different grid resolutions available in HUC12 data release to use depending on model input being used. 
-
-### Option 1: 2 Dimensional Aggregation
-
-
-### Option 2: 1 Dimensional Aggregation
-
-> [!IMPORTANT]
-> Are both the 2D and 1D notebooks being performed on the same model inputs? At first glance it looks like the 1D notebook is just grabbing stats from the spatial units file. 
 
 
 
