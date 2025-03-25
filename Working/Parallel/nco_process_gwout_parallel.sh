@@ -109,11 +109,19 @@ for mo in $(seq 1 1 12); do
     infiles=(${indir}/${YYYY}${MM}*.GWOUT_DOMAIN1)
     infiles_list=`echo "${infiles[*]}"`
     count=${#infiles[@]}
-    # Rename the variable "depth" to "bucket_depth" in all files before processing
-    echo "      Renaming 'depth' to 'bucket_depth' in input files"
+    # Check and rename the variable "depth" to "bucket_depth" if not already renamed
+    echo "      Checking and renaming 'depth' to 'bucket_depth' if necessary"    
     for infile in "${infiles[@]}"; do
-        ncrename -h -v depth,bucket_depth "${infile}"
-    done
+    # Check if "depth" variable exists using ncdump
+    if ncdump -h "${infile}" | grep -q 'depth'; then
+        # Rename the variable only if "depth" exists
+        echo "        Renaming 'depth' to 'bucket_depth' in ${infile}"
+        ncrename -h -v .depth,bucket_depth "${infile}"
+    else
+        echo "        'depth' already renamed in ${infile}, skipping"
+    fi
+done 
+   
     echo "      Processing sums and means"
     echo "        found $count files"
     echo "        first ${infiles[0]}"
@@ -125,8 +133,8 @@ for mo in $(seq 1 1 12); do
     rm ${tmpfile}
     echo "      Processing depth average"
     #ncra -O -y avg -v depth ${infiles_list} tmpavg_gw.nc # does not work since no record dim
-    ncea -h -y avg -v depth ${infiles_list} ${tmpfile}
-    ncks -h -A -v depth ${tmpfile} ${outfile}
+    ncea -h -y avg -v bucket_depth ${infiles_list} ${tmpfile}
+    ncks -h -A -v bucket_depth ${tmpfile} ${outfile}
     rm ${tmpfile}
     ncap2 -O -s "inflow=float(inflow*3600)" ${outfile} ${outfile}
     ncap2 -O -s "outflow=float(outflow*3600)" ${outfile} ${outfile}
