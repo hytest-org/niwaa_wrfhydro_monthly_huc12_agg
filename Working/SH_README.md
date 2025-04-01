@@ -71,7 +71,7 @@ Launch slurm script with an array of years of interest, 2011-2013 is used here.
 ```
 sbatch --array=2011-2013 ldasout_nco.slurm
 ```
-To check on the status of slurm request:
+To check on the status of slurm request and find job id:
 ```
 squeue -u <username>
 ```
