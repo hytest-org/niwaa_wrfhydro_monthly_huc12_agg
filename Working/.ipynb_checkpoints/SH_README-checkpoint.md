@@ -1,4 +1,7 @@
-# Hourly to Monthly Workflow
+# Converting CONUS404-BA Forced WRF-Hydro Modeling Application Outputs from Hourly to Monthly. 
+WRF-Hydro Modeling Application outputs are provided at the hourly timescale while CONUS404-BA temperature and precipitation outputs are provided at the 3-hourly timescale. 
+
+purpose: to compare to NHM-PRMS monthly data; A lot of water budget components are better aggregating to monthly because it can be really noisy at a daily or hourly scale; easier to see patterns etc.
 
 ## Overview
 NCO is required for this workflow: [netCDF Operator](https://nco.sourceforge.net/). USGS HPC Hovenweep has an NCO module set up that needs to be loaded before the workflow is run. 

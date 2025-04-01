@@ -17,8 +17,7 @@ The scripts are set up to run individual water years.
 
 The NIWAA WRF-Hydro files are available separated by calendar year (Jan-Dec). The shell scripts require the files to be separated by Water Year (Oct-Sep). This reorganization workflow was not provided by NCAR. 
 
-> [!TIP]
-> Improvement: Combine folder reorganization to water year step with hourly-monthly summary step. Or eliminate need to reorganize into water year in the first place?  
+
 
 
 
@@ -83,7 +82,9 @@ There are different grid resolutions available in HUC12 data release to use depe
 
 
 
-
+## WILTING
+There are fundamental differences in soil saturation representation between NHM-PRMS forced w/ C404 BA and WRFHydro forced w/ C404BA
+wilting variables are being produced using Wrfhydro outputs in order to compare directly to NHM-PRMS modeling applications
 
 
 # NCAR Notes: 
