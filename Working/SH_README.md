@@ -1,4 +1,5 @@
-# Hourly to Monthly Workflow
+# Converting CONUS404-BA Forced WRF-Hydro Modeling Application Outputs from Hourly to Monthly. 
+WRF-Hydro Modeling Application Outputs are provided at the hourly timescale while CONUS404-BA 
 
 ## Overview
 NCO is required for this workflow: [netCDF Operator](https://nco.sourceforge.net/). USGS HPC Hovenweep has an NCO module set up that needs to be loaded before the workflow is run. 
