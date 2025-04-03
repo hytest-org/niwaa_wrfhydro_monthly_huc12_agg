@@ -47,14 +47,14 @@ The following input files are needed for this workflow. A 3 year subset of these
     <td>*/static_niwaa_wrf_hydro_files</td>
   </tr>
   <tr>
-    <td>[CONUS404-BA](#CONUS404-BA)</td>
+    <td><a href="#CONUS404-BA"><b>CONUS404-BA</b></a></td>
     <td>LDASIN</td>
     <td>Bias adjusted climate variables.</td>
     <td><a href="https://www.sciencebase.gov/catalog/item/64f77acad34ed30c20544c18">CONUS404-BA</a></td>
     <td>*/LDASIN</td>
   </tr>
     <tr>
-    <td rowspan="4">[HUC12s](#HUC12s)</td>
+    <td rowspan="4"><a href="#HUC12s"><b>HUC12s</b></a></td>
     <td>1000m</td>
     <td>HUC12 attribution one-kilometer grid cell modeling domains.</td>
     <td rowspan="3"><a href="https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d">HUC12 grids</a></td>
@@ -89,9 +89,11 @@ The Weather Research and Forecasting Hydrological modeling system ([WRF-Hydro](h
 
 Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordings](https://doimspp.sharepoint.com/sites/gs-wma-hytest/SitePages/WRF-Hydro-Modeling-System-Hands-on-Tutorial.aspx?xsdata=MDV8MDJ8fDRlMzY5NWMwMTU1MzRiYzEyZjNkMDhkZDcxMzA3YjVmfDA2OTNiNWJhNGIxODRkN2I5MzQxZjMyZjQwMGE1NDk0fDB8MHw2Mzg3OTExNzUxOTg2ODI5NDF8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKV0lqb2lNQzR3TGpBd01EQWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazkwYUdWeUlpd2lWMVFpT2pFeGZRPT18MXxMMk5vWVhSekx6RTVPamcwTlRNME1EQmhMVEF5WldRdE5HVXpPUzFoTW1VMkxUZGhOMlJoWWpsak5UYzBaVjlsWWpVME1UazRNeTAwWVdSaUxUUTNZbU10WVRZeFpTMWhNR1V6WVdRMVl6a3hNV05BZFc1eExtZGliQzV6Y0dGalpYTXZiV1Z6YzJGblpYTXZNVGMwTXpVeU1EY3hPRGc1TWc9PXw1ZTFlYjM2NzA4MWQ0YjZiY2NkNjA4ZGQ3MTMwN2I1Y3w0OTYwODE5NzFjMmQ0ZWMyOTA5MmVlNmVhMzE1OWEyZA%3D%3D&sdata=UDZvaGNyMktQcXZic3pDdmI5NEpOUFhkdnhCNjZOVTlzYll3cmk1OTM4UT0%3D&ovuser=0693b5ba-4b18-4d7b-9341-f32f400a5494%2Clstaub%40usgs.gov&OR=Teams-HL&CT=1743697590477&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTAzMTMyMTAxMiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D) are a great resource and [this document](https://ral.ucar.edu/sites/default/files/docs/water/wrf-hydro-v511-technical-description.pdf) provides even more technical details! 
 
-## <a name="CONUS404-BA"></a>CONUS404-BA Background
+<a id="CONUS404-BA"></a>
+<h2>CONUS404-BA Background</h2>
 
-## <a name="HUC12s"></a>HUC12s Background
+<a id="HUC12s"></a>
+<h2>HUC12s Background</h2>
 
 ## Compute Environment Needs
 The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised of 12 years of hourly data (2009-2011). The following information was gathered to better understand computational needs:
