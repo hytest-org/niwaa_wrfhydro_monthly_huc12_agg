@@ -1,7 +1,7 @@
 # Aggregating the WRF-Hydro Modeling Application output to twelve-digit hydrologic unit codes (HUC12s)
 **Workflow Authors:** Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR)
 
-This workflow is a combination of shell scripts and jupyter notebooks that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the CONtiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for NIWAA's data reports, the 10 year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
+This workflow is a combination of shell scripts and jupyter notebooks that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the CONtiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the National IWAA's data reports, the 10 year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
 
 ## Workflow Overview
 There are 4 major processes: 
@@ -71,7 +71,7 @@ The following input files are needed for this workflow. A 3 year subset of these
     <td>*/HUC12_grids/Final_HUC12IDs.tif</td>
   </tr>
   <tr>
-    <td>WBD hu12</td>
+    <td>WBD HUC12</td>
     <td>WBD HUC12 geopackage containing character HUCIDs</td>
     <td><a href="https://www.sciencebase.gov/catalog/item/63cb38b2d34e06fef14f40ad">WBD gpkg</a></td>
     <td>*/HUC12_grids/HUC12.gpkg</td>
@@ -95,8 +95,8 @@ Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordin
 [CONUS404](https://www.sciencebase.gov/catalog/item/6372cd09d34ed907bf6c6ab1) is a high resolution hydro-climate dataset used for forcing hydrological models and covers 43 years of data at 4km resolution. Two separate fields (2-meter air temperature and precipitation) in this dataset had biases identified, leading to the development of a new product [CONUS404-BA](https://www.sciencebase.gov/catalog/item/64f77acad34ed30c20544c18). This dataset has downscaled the CONUS404 dataset from 4km to 1km, and bias adjusted the 2-meter air temperature and precipitation fields using Daymet version 3 as the background observational reference. This workflow uses the precipitation and rainrate fields from the CONUS404-BA output (LDASIN).  
 
 <a id="HUC12s"></a>
-<h3>HUC12s Background</h3>
-
+<h3>WBD HUC12s Background</h3>
+The Watershed Boundary Dataset 12-digit hydrologic unit code catchments 
 
 ## Compute Environment Needs
 The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised of 12 years of hourly data (2009-2011). The following information was gathered to better understand computational needs:
