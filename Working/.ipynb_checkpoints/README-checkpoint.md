@@ -1,11 +1,15 @@
 # Aggregating the WRF-Hydro Modeling Application output to twelve-digit hydrologic unit codes (HUC12s)
 
-This workflow is a combination of shell scripts and jupyter notebooks that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to CONUS water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. 
+This workflow is a combination of shell scripts and jupyter notebooks that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to CONUS water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. The WRF-Hydro Modeling Application 
+
+Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordings](https://doimspp.sharepoint.com/sites/gs-wma-hytest/SitePages/WRF-Hydro-Modeling-System-Hands-on-Tutorial.aspx?xsdata=MDV8MDJ8fDRlMzY5NWMwMTU1MzRiYzEyZjNkMDhkZDcxMzA3YjVmfDA2OTNiNWJhNGIxODRkN2I5MzQxZjMyZjQwMGE1NDk0fDB8MHw2Mzg3OTExNzUxOTg2ODI5NDF8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKV0lqb2lNQzR3TGpBd01EQWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazkwYUdWeUlpd2lWMVFpT2pFeGZRPT18MXxMMk5vWVhSekx6RTVPamcwTlRNME1EQmhMVEF5WldRdE5HVXpPUzFoTW1VMkxUZGhOMlJoWWpsak5UYzBaVjlsWWpVME1UazRNeTAwWVdSaUxUUTNZbU10WVRZeFpTMWhNR1V6WVdRMVl6a3hNV05BZFc1eExtZGliQzV6Y0dGalpYTXZiV1Z6YzJGblpYTXZNVGMwTXpVeU1EY3hPRGc1TWc9PXw1ZTFlYjM2NzA4MWQ0YjZiY2NkNjA4ZGQ3MTMwN2I1Y3w0OTYwODE5NzFjMmQ0ZWMyOTA5MmVlNmVhMzE1OWEyZA%3D%3D&sdata=UDZvaGNyMktQcXZic3pDdmI5NEpOUFhkdnhCNjZOVTlzYll3cmk1OTM4UT0%3D&ovuser=0693b5ba-4b18-4d7b-9341-f32f400a5494%2Clstaub%40usgs.gov&OR=Teams-HL&CT=1743697590477&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTAzMTMyMTAxMiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D) are a great resource! 
 
 Originally generated for NIWAA's data reports, the outputs from this workflow can be found here: [Monthly twelve-digit hydrologic unit code aggregations of the WRF-Hydro modeling application with CONUS404BA Atmospheric Forcings, 2009-2021](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
 
-This workflow was written by Kevin Sampson and Aubrey Dugger and provided to USGS HyTEST team members. 
+> [!IMPORTANT]
+> This workflow was written by Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR). 
 
+## Overview
 There are 4 major processes: 
 1. Summarize variables from hourly to monthly
 2. Aggregate variables to HUC12 basins
@@ -78,6 +82,26 @@ The following input files are needed for this workflow. A 3 year subset of these
     <td>*/HUC12_grids/HUC12.gpkg</td>
   </tr>
 </table>
+
+## Input Data Background 
+The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised of 12 years of hourly data (2009-2011). The following information was gathered to better understand computational needs:
+There are three leap years during this time span (2012, 2016, and 2020). There are 4 variables total: LDASOUT, LDASIN, CHRTOUT, and GWOUT. LDASOUT, CHRTOUT, and GWOUT each have 1 netcdf file for each hour in a day (24 files per day) while LDASOUT has 1 netcdf for every 3 hours (8 files per day). 
+
+
+| **Source** | **Variable** | **File Structure** | **Time Step** | **Total Number of Files** | **Size** |
+| ------ | ------ | ------ | ------ | ------ | ------ |
+| WRF-Hydro | LDASOUT | Calendar Year | 3-hourly | ~35,064 | ~7,000 GB |
+| CONUS404-BA | LDASIN | Water Year | hourly | ~105,192 | ~21,000 GB |
+| WRF-Hydro | GWOUT | Calendar Year | hourly | ~105,192 | ~21,000 GB |
+| WRF-Hydro | CHRTOUT | Calendar Year | hourly | ~105,192 | ~21,000 GB |
+
+This means that there are roughly ~350,640 files used as inputs to this workflow that will take up at least 70,000 GBs worth of storage space. 
+
+
+
+
+
+
 
 
 ## Step 0: Prepping Datasets
