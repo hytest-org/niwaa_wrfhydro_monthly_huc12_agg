@@ -58,7 +58,7 @@ The following input files are needed for this workflow. A 3 year subset of these
     <td rowspan="4">HUC12s</td>
     <td>1000m</td>
     <td>HUC12 attribution one-kilometer grid cell modeling domains.</td>
-    <td rowspan="4"><a href="https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d">HUC12 grids</a></td>
+    <td rowspan="3"><a href="https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d">HUC12 grids</a></td>
     <td>*/HUC12_grids/HUC12s_on_1000m_grid.tif</td>
   </tr>
   <tr>
