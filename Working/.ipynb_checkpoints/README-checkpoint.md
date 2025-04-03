@@ -78,15 +78,12 @@ The following input files are needed for this workflow. A 3 year subset of these
   </tr>
 </table>
 
-<div align="center">
-![Screenshot](https://github.com/hytest-org/niwaa_wrfhydro_monthly_huc12_agg/tree/Dev/Working/images/wrf-hydro_logo.png)
-</div>
+![Screenshot](images/wrf-hydro_logo.png)
 
 The Weather Research and Forecasting Hydrological modeling system ([WRF-Hydro](https://ral.ucar.edu/projects/wrf_hydro)) provides water budget estimates across space and time by linking process models of the atmosphere and terrestrial hydrology. The image below has the output files organized by model physics component with the files used in this workflow highlighted.
 
-<div align="center">
-![Screenshot](https://github.com/hytest-org/niwaa_wrfhydro_monthly_huc12_agg/tree/Dev/Working/images/wrf-hydro_outputs2.png)
-</div>
+![Screenshot](images/wrf-hydro_outputs2.png)
+
 
 Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordings](https://doimspp.sharepoint.com/sites/gs-wma-hytest/SitePages/WRF-Hydro-Modeling-System-Hands-on-Tutorial.aspx?xsdata=MDV8MDJ8fDRlMzY5NWMwMTU1MzRiYzEyZjNkMDhkZDcxMzA3YjVmfDA2OTNiNWJhNGIxODRkN2I5MzQxZjMyZjQwMGE1NDk0fDB8MHw2Mzg3OTExNzUxOTg2ODI5NDF8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKV0lqb2lNQzR3TGpBd01EQWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazkwYUdWeUlpd2lWMVFpT2pFeGZRPT18MXxMMk5vWVhSekx6RTVPamcwTlRNME1EQmhMVEF5WldRdE5HVXpPUzFoTW1VMkxUZGhOMlJoWWpsak5UYzBaVjlsWWpVME1UazRNeTAwWVdSaUxUUTNZbU10WVRZeFpTMWhNR1V6WVdRMVl6a3hNV05BZFc1eExtZGliQzV6Y0dGalpYTXZiV1Z6YzJGblpYTXZNVGMwTXpVeU1EY3hPRGc1TWc9PXw1ZTFlYjM2NzA4MWQ0YjZiY2NkNjA4ZGQ3MTMwN2I1Y3w0OTYwODE5NzFjMmQ0ZWMyOTA5MmVlNmVhMzE1OWEyZA%3D%3D&sdata=UDZvaGNyMktQcXZic3pDdmI5NEpOUFhkdnhCNjZOVTlzYll3cmk1OTM4UT0%3D&ovuser=0693b5ba-4b18-4d7b-9341-f32f400a5494%2Clstaub%40usgs.gov&OR=Teams-HL&CT=1743697590477&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTAzMTMyMTAxMiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D) are a great resource and [this document](https://ral.ucar.edu/sites/default/files/docs/water/wrf-hydro-v511-technical-description.pdf) provides even more technical details! 
 
