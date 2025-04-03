@@ -78,7 +78,9 @@ The following input files are needed for this workflow. A 3 year subset of these
   </tr>
 </table>
 
-## <a name="WRF-Hydro"></a>WRF-Hydro Background
+<a id="WRF-Hydro"></a>
+<h2>WRF-Hydro Background</h2>
+
 ![Screenshot](images/wrf-hydro_logo.png)
 
 The Weather Research and Forecasting Hydrological modeling system ([WRF-Hydro](https://ral.ucar.edu/projects/wrf_hydro)) provides water budget estimates across space and time by linking process models of the atmosphere and terrestrial hydrology. The image below has the output files organized by model physics component with the files used in this workflow highlighted.
