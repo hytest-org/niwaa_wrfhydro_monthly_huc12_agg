@@ -12,11 +12,13 @@ There are 4 major processes:
 3. Merge 1-Dimensional and 2-dimensional variable aggregations together
 4. Format final outputs
 
-There are a handful of 
-
+The following input files are needed for this workflow. A 3 year subset of these inputs have been downloaded to the HyTEST hovenweep area. Descriptions and download links are provided in the table below:
 
 <table>
   <tr>
+    <td colspan="5" align="center"><b>*/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data</b></td>
+  </tr>
+  <tr>  
     <th>Dataset</th>
     <th>Model Output</th>
     <th>Description</th>
@@ -24,7 +26,7 @@ There are a handful of
     <th>*Hovenweep Location</th>
   </tr>
   <tr>
-    <td rowspan="4"><b>WRF-Hydro</b></td>
+    <td rowspan="4">WRF-Hydro</td>
     <td>LDASOUT</td>
     <td>Land model output variables.</td>
     <td rowspan="4"><a href="https://www.sciencebase.gov/catalog/item/661039a6d34e6334665050f4">WRF-Hydro forced CONUS404-BA NHDPLUSV2</a></td>
@@ -52,10 +54,30 @@ There are a handful of
     <td><a href="https://www.sciencebase.gov/catalog/item/64f77acad34ed30c20544c18">CONUS404-BA</a></td>
     <td>*/LDASIN</td>
   </tr>
+    <tr>
+    <td rowspan="4">HUC12s</td>
+    <td>1000m</td>
+    <td>HUC12 attribution one-kilometer grid cell modeling domains.</td>
+    <td rowspan="4"><a href="https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d">HUC12 grids</a></td>
+    <td>*/HUC12_grids/HUC12s_on_1000m_grid.tif</td>
+  </tr>
+  <tr>
+    <td>250m</td>
+    <td>HUC12 attribution to the 250-meter grid cell modeling domains.</td>
+    <td>*/HUC12_grids/HUC12s_on_250m_grid.tif</td>
+  </tr>
+  <tr>
+    <td>Crosswalk</td>
+    <td>HUC12 spatial units, hydrofabric flowlines, and hydrofabric catchments, and two grid files.</td>
+    <td>*/HUC12_grids/Final_HUC12IDs.tif</td>
+  </tr>
+  <tr>
+    <td>WBD hu12</td>
+    <td>WBD HUC12 geopackage containing character HUCIDs</td>
+    <td><a href="https://www.sciencebase.gov/catalog/item/63cb38b2d34e06fef14f40ad">WBD gpkg</a></td>
+    <td>*/HUC12_grids/HUC12.gpkg</td>
+  </tr>
 </table>
-
-
-
 
 
 ## Step 0: Prepping Datasets
