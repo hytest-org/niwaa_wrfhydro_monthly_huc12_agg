@@ -58,7 +58,7 @@ ssh-add <insert/path/to/private/key>
 
 Navigate to the project of interest and click "Fork" in the top right level with the repository name, this will open a forked copy of the repository that will belong to you.
 
-# Clone the repository of interest
+## Clone the repository of interest
 Within your fork, click the blue "Clone" button near the middle-right side of the screen. 
 
 Click the copy icon under "Clone with SSH". Paste the ssh clone address with the following command: 

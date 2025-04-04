@@ -8,10 +8,10 @@ This repository is dedicated to understanding pre-existing scripts provided by N
 
 Tasking can be tracked [here](https://github.com/hytest-org/hytest_internal/issues/47#issue-2468332257)
 
-@hytest-org Task Team members: 
-- @lstaub4
-- @amsnyder
-- @sfoks
+[HyTEST](https://github.com/hytest-org) Task Team members: 
+- [lstaub4](https://github.com/lstaub4)
+- [amsnyder](https://github.com/amsnyder)
+- [sfoks](https://github.com/sfoks)
 
 ## At a glance
 **NCAR_Scripts:** Folder containing unedited workflow from NCAR.
@@ -58,7 +58,7 @@ ssh-add <insert/path/to/private/key>
 
 Navigate to the project of interest and click "Fork" in the top right level with the repository name, this will open a forked copy of the repository that will belong to you.
 
-# Clone the repository of interest
+## Clone the repository of interest
 Within your fork, click the blue "Clone" button near the middle-right side of the screen. 
 
 Click the copy icon under "Clone with SSH". Paste the ssh clone address with the following command: 
