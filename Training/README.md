@@ -133,7 +133,7 @@ There is a python aggregation script for each data type: 1-Dimensional and 2-Dim
     <th>Grid</th>
   </tr>
   <tr>
-    <td rowspan="12"><a href="#WRF-Hydro"><b>WRF-Hydro</b></a></td>
+    <td rowspan="19"><a href="#WRF-Hydro"><b>WRF-Hydro</b></a></td>
     <td rowspan="12">LDASOUT</td>
     <td>deltaACCET</td>
     <td>2D</td>
