@@ -232,7 +232,7 @@ There is a python aggregation script for each data type: 1-Dimensional and 2-Dim
     <td>grid</td> 
   </tr>
   <tr>
-    <td><a href="#CONUS404-BA"><b>CONUS404-BA</b></a></td>
+    <td rowspan="2"><a href="#CONUS404-BA"><b>CONUS404-BA</b></a></td>
     <td rowspan="2">LDASIN</td>
     <td>totPRECIP</td>
     <td>2D</td>
