@@ -5,7 +5,7 @@ This workflow is a combination of shell scripts and jupyter notebooks that aggre
 
 ## Workflow Overview
 There are 4 major processes: 
-1. Summarize variables from hourly to monthly
+1. "><a href="#Hourly to Monthly"><b>Summarize variables from hourly to monthly</b></a>Summarize variables from hourly to monthly
 2. Aggregate variables to HUC12 basins
 3. Merge 1-Dimensional and 2-Dimensional variable aggregations together
 4. Format final outputs
@@ -110,10 +110,12 @@ There are three leap years during this time span (2012, 2016, and 2020). There a
 | WRF-Hydro | GWOUT | Calendar Year | hourly | ~105,192 | ~21,000 GB |
 | WRF-Hydro | CHRTOUT | Calendar Year | hourly | ~105,192 | ~21,000 GB |
 
-This means that there are roughly ~350,640 files used as inputs to this workflow that will take up at least 70,000 GBs worth of storage space. Because of these file sizes, this workflow was developed using High Processing Computer (HPC) systems. To save on storage space, a three year subset of these data were downloaded to the USGS HPC system, Hovenweep. The workflow in this repository is currently set up to run on this temporal subset of data (2011, 2012, and 2013) but can be modified to include a larger time scale. 
+There are roughly ~350,640 files used as inputs to this workflow that will take up at least 70,000 GBs worth of storage space. Because of these file sizes, this workflow was developed using High Processing Computer (HPC) systems. To save on storage space, a three year subset of these data was downloaded to the USGS HPC system, Hovenweep. The workflow in this repository is currently set up to run on this temporal subset of data (2011, 2012, and 2013) but can be modified to include a larger time scale.
 
+The hourly to monthly summarization portion of this workflow is in need of a module called Netcdf Operator (NCO). The aggregation portion of this workflow requires a python environment yml file to be installed. 
 
-
+<a id="Hourly to Monthly"></a>
+<h3>Hourly to Monthly Summaries</h3>
 
 
 
