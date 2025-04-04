@@ -1,7 +1,7 @@
 # Aggregating the WRF-Hydro Modeling Application output to twelve-digit hydrologic unit codes (HUC12s)
 **Workflow Authors:** Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR)
 
-This workflow is a combination of shell scripts and jupyter notebooks that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the CONtiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the National IWAA's data reports, the 10 year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
+This workflow is a combination of shell scripts and jupyter notebooks that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the CONtiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the National Integrated Water Availability Assessment (NIWAA) reports, the 10 year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
 
 ## Workflow Overview
 There are 4 major processes: 
@@ -96,7 +96,8 @@ Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordin
 
 <a id="HUC12s"></a>
 <h3>WBD HUC12s Background</h3>
-The Watershed Boundary Dataset 12-digit hydrologic unit code catchments 
+
+The twelve-digit hydrologic unit codes (HUCs) are derived within the Watershed Boundary Dataset (WBD) and are part of a nested spatial unit system. Each drainage area is considered a Hydrologic Unit (HU) and is given a Hydrologic Unit Code (HUC) which serves as the unique identifier for the area. HUC 2s, 6s, 8s, 10s, & 12s, define the drainage Regions, Subregions, Basins, Subbasins, Watersheds and Subwatersheds, respectively, across the United States. Their boundaries are defined by hydrologic and topographic criteria that delineate an area of land upstream from a specific point on a river. The United States congress has assigned the USGS, along with other Federal agencies, to assess national water availability every five years under the SECURE Water Act. The HUC12 spatial unit is of interest because it is the reporting unit used by the [National Integrated Water Availability Assessments](https://pubs.usgs.gov/publication/pp1894A) (NIWAAs). 
 
 ## Compute Environment Needs
 The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised of 12 years of hourly data (2009-2011). The following information was gathered to better understand computational needs:
