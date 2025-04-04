@@ -216,7 +216,7 @@ There is a python aggregation script for each data type: 1-Dimensional and 2-Dim
     <td>grid</td> 
   </tr>
   <tr>
-    <td rowspan="4">CHRTOUT</td>
+    <td rowspan="3">CHRTOUT</td>
     <td>totqBucket</td>
     <td>1D</td>
     <td>grid</td> 
