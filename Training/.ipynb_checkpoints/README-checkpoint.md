@@ -138,7 +138,6 @@ There is a python aggregation script for each data type: 1-Dimensional and 2-Dim
     <td>deltaACCET</td>
     <td>2D</td>
     <td>grid</td>
-    <td rowspan="4"><a href="https://www.sciencebase.gov/catalog/item/661039a6d34e6334665050f4">WRF-Hydro forced CONUS404-BA NHDPLUSV2</a></td>
   </tr>
   <tr>
     <td>deltaACSNOW</td>
@@ -196,22 +195,52 @@ There is a python aggregation script for each data type: 1-Dimensional and 2-Dim
     <td>grid</td>      
   </tr>
   <tr>
-    <td>CHRTOUT</td>
-    <td>Stream channel routing network.</td>
+    <td rowspan="4">GWOUT</td>
+    <td>totOutflow</td>
+    <td>1D</td>
+    <td>grid</td> 
   </tr>
   <tr>
-    <td>GWOUT</td>
-    <td>Conceptual groundwater output.</td>
+    <td>totInflow</td>
+    <td>1D</td>
+    <td>grid</td> 
   </tr>
   <tr>
-    <td>Static Files</td>
-    <td>9 parameter files.</td>
+    <td>deltaDepth</td>
+    <td>1D</td>
+    <td>grid</td> 
+  </tr>
+  <tr>
+    <td>bucket_depth</td>
+    <td>1D</td>
+    <td>grid</td> 
+  </tr>
+  <tr>
+    <td rowspan="4">CHRTOUT</td>
+    <td>totqBucket</td>
+    <td>1D</td>
+    <td>grid</td> 
+  </tr>
+  <tr>
+    <td>totqSfcLatRunoff</td>
+    <td>1D</td>
+    <td>grid</td> 
+  </tr>
+  <tr>
+    <td>totStreamflow</td>
+    <td>1D</td>
+    <td>grid</td> 
   </tr>
   <tr>
     <td><a href="#CONUS404-BA"><b>CONUS404-BA</b></a></td>
-    <td>LDASIN</td>
-    <td>Bias adjusted climate variables.</td>
-    <td><a href="https://www.sciencebase.gov/catalog/item/64f77acad34ed30c20544c18">CONUS404-BA</a></td>
+    <td rowspan="2">LDASIN</td>
+    <td>totPRECIP</td>
+    <td>2D</td>
+    <td>grid</td>  
+  </tr>
+    <td>avgT2D</td>
+    <td>2D</td>
+    <td>grid</td>      
   </tr>
 </table>
 
