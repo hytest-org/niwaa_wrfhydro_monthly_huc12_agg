@@ -5,13 +5,13 @@ This workflow is a combination of shell scripts and jupyter notebooks that aggre
 
 ## Workflow Overview
 There are 4 major processes: 
-1. "><a href="#Hourly to Monthly"><b>Summarize variables from hourly to monthly</b></a>Summarize variables from hourly to monthly
-2. Aggregate variables to HUC12 basins
-3. Merge 1-Dimensional and 2-Dimensional variable aggregations together
-4. Format final outputs
+1. <a href="#Hourly to Monthly"><b>Summarize variables from hourly to monthly</b></a>
+2. <a href="#Aggregations"><b>Aggregate variables to HUC12 basins</b></a>
+3. <a href="#Merge"><b>Merge 1-Dimensional and 2-Dimensional variable aggregations together</b></a>
+4. <a href="#Format"><b>Format final outputs</b></a>
 
 ## Input Data
-The following input files are needed for this workflow. A 3 year subset of these inputs have been downloaded to the HyTEST hovenweep area. Descriptions and download links are provided in the table below:
+The following input files are needed for this workflow. A 3 year subset of these inputs has been downloaded to the HyTEST hovenweep area. Descriptions and download links are provided in the table below:
 
 <table>
   <tr>
@@ -117,78 +117,23 @@ The hourly to monthly summarization portion of this workflow is in need of a mod
 <a id="Hourly to Monthly"></a>
 <h3>Hourly to Monthly Summaries</h3>
 
+The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS404-BA forcing variable subset LDASIN are summarized from hourly to mothly time steps. There is 1 shell script for each variable to be processed, with each one utilizing the NCO module. 
+
+<a id="Aggregations"></a>
+<h3>Aggregating to HUC12s</h3>
 
 
-
-
-## Step 0: Prepping Datasets
-Convert NIWAA WRF-Hydro simulation from 3-hourly to into monthly time steps. 
-This process is done for each output type in the form of .sh scripts that can be run in command line.
-The scripts are set up to run individual water years. 
-
-The NIWAA WRF-Hydro files are available separated by calendar year (Jan-Dec). The shell scripts require the files to be separated by Water Year (Oct-Sep). This reorganization workflow was not provided by NCAR. 
-
-
-
-
-
-
-
-2. Install nco into an Anaconda environment
-```
-
-
-```
-
-> [!TIP]
-> Improvement: Eliminate need to install NCO independently? 
-
-
-Once nco is loaded, Step 0 can begin. There are 4 shell scripts total, one for each of the WRF-Hydro outputs to be aggregated. 
-##### nco_process_ldasout.sh
-You will need to specify three paths: 
-  - The location of the 3-hourly WRF-Hydro output files.
-  - The location of the static soil properties file.
-  - The location of where to save the monthly outputs.
-##### nco_process_gwout.sh
-
-##### nco_process_clim.sh
-
-##### nco_process_chrtout.sh
-
-Once these details are modified in the shell script, they can be run using the following command- specifying which year to run the process on: 
-```
-./nco_process_ldasout.sh 2009
-```
-In order for the above command to run, I have to edit permission for the shell script: 
-```
-chmod +x /path/to/yourscript.sh
-```
-
-
-
-
-> [!TIP]
-> Improvement: Two thoughts on this process
-> 1. Keep this process as shell scripts, but find a way to specify it to run on more than 1 year.
-> 2. convert to python notebook using coarsen package? 
-
-
-
-
-## Step 2: Aggregations
-Aggregate monthly WRF-Hydro monthly simulations to HUC12 catchments. 
-
+2D and 1D 
 ### Note: the model inputs have different grid resoultions 
 There are different grid resolutions available in HUC12 data release to use depending on model input being used. 
 
-### Option 1: 2 Dimensional Aggregation
+<a id="Merge"></a>
+<h3>Merge 1D & 2D datasets</h3>
+
+<a id="Format"></a>
+<h3>Format final outputs</h3>
 
 
-### Option 2: 1 Dimensional Aggregation
-
-> [!IMPORTANT]
-> Are both the 2D and 1D notebooks being performed on the same model inputs? At first glance it looks like the 1D notebook is just grabbing stats from the spatial units file. 
 
 
 
@@ -196,16 +141,3 @@ There are different grid resolutions available in HUC12 data release to use depe
 ## WILTING
 There are fundamental differences in soil saturation representation between NHM-PRMS forced w/ C404 BA and WRFHydro forced w/ C404BA
 wilting variables are being produced using Wrfhydro outputs in order to compare directly to NHM-PRMS modeling applications
-
-
-# NCAR Notes: 
-# niwaa_monthly_huc12_aggregations
-Scripts to post-process WRF-Hydro National Integrated Water Availability Assessment (NIWAA) simulations into monthly HUC12 aggregations.
-
-# wrf_hydro_model_tools
-Supplementary scripts associated with the release of the WRF-Hydro community code
-
-+ **[forcing/](/forcing)**
-  + scripts for retrieval and regridding of meteorological forcing data
-+ **[parameters/](/parameters)**
-  + scripts for generating and modifying model parameter files
