@@ -1,0 +1,81 @@
+# Summarizing the WRF-Hydro Modeling Application outputs from hourly to monthly. 
+**Workflow Authors:** Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR)
+
+WRF-Hydro Modeling Application outputs are provided at the hourly timescale while CONUS404-BA temperature and precipitation outputs are provided at the 3-hourly timescale. Many water budget components are summarized at the monthly scale because daily or hourly scales can promote noise. Monthly temporal resolution can also make it easier to identify patterns in the data. Additionally, NHM-PRMS data is at the monthly time scale, so summarizing WRF-Hydro outputs to a monthly time scale will make comparisons between the two models possible.   
+
+## Overview
+NCO is required for this workflow: [netCDF Operator](https://nco.sourceforge.net/). USGS HPC Hovenweep has an NCO module set up that needs to be loaded before the workflow is run. 
+
+To keep processing times low, this workflow has been parallelized. There are 4 variables that need to be converted from hourly to monthly: LDASOUT, LDASIN, CHRTOUT, and GWOUT. Each variable has a shell script that does the hourly to monthly calculations. These can be run for a single year or called into a slurm file to run multiple years at once. 
+
+| **Source** | **File** | **File Structure** | **Time Step** | **Shell Script** | **Slurm file** |
+| ------ | ------ | ------ | ------ | ------ | ------ |
+| WRF-Hydro | LDASOUT | Calendar Year | 3-hourly | nco_process_ldasout.sh | ldasout_nco.slurm |
+| CONUS404-BA | LDASIN | Water Year | hourly | nco_process_clim.sh | clim_nco.slurm |
+| WRF-Hydro | GWOUT | Calendar Year | hourly | nco_process_gwout.sh | gwout_nco.slurm |
+| WRF-Hydro | CHRTOUT | Calendar Year | hourly | nco_process_chrtout.sh | chrtout_nco.slurm |
+
+## Script Preparations:
+##### nco_process_ldasout.sh
+You will need to specify three paths: 
+  - The location of the 3-hourly WRF-Hydro output LDASOUT files.
+  - The location of the static soil properties file.
+  - The location of where to save the monthly outputs.
+
+##### nco_process_gwout.sh
+You will need to specify two paths: 
+  - The location of the hourly WRF-Hydro output GWOUT files.
+  - The location of where to save the monthly outputs.
+*Note: this script has some additional lines of code to deal with filetypes in the depth variable. Renaming the variable seems to fix this bug. Another option is to use older version of the NCO module- this has not been explored yet.
+
+##### nco_process_clim.sh
+You will need to specify two paths: 
+  - The location of the hourly CONUS404-BA output LDASIN files.
+  - The location of where to save the monthly outputs.
+*Note: this script has some additional lines of code to deal with this data being organized by Water Year.
+
+##### nco_process_chrtout.sh
+You will need to specify two paths: 
+  - The location of the hourly WRF-Hydro output CHRTOUT files.
+  - The location of where to save the monthly outputs.
+  
+## One Year at a Time: 
+
+Load netcdf operator
+```
+module load nco
+```
+Ensure paths in shell script are correct. 
+
+Allow edit permission for the shell script:
+```
+chmod +x /path/to/yourscript.sh
+```
+Run the shell script. 
+```
+./nco_process_ldasout.sh 2009
+```
+Repeat for other variables. 
+
+
+
+## Multiple Years at Once: 
+
+Ensure paths in shell script and slurm file are correct. 
+
+Allow edit permission for the shell script:
+```
+chmod +x /path/to/yourscript.sh
+```
+Launch slurm script with an array of years of interest, 2011-2013 is used here. 
+```
+sbatch --array=2011-2013 ldasout_nco.slurm
+```
+To check on the status of slurm request and find job id:
+```
+squeue -u <username>
+```
+If you need to cancel the request: 
+```
+scancel <jobid>
+```
