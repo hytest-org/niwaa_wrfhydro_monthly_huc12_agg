@@ -8,7 +8,7 @@ This repository is dedicated to understanding pre-existing scripts provided by N
 
 Tasking can be tracked [here](https://github.com/hytest-org/hytest_internal/issues/47#issue-2468332257)
 
-Task Team members: 
+@hytest-org Task Team members: 
 - @lstaub4
 - @amsnyder
 - @sfoks
