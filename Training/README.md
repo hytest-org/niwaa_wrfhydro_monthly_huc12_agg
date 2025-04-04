@@ -133,21 +133,67 @@ There is a python aggregation script for each data type: 1-Dimensional and 2-Dim
     <th>Grid</th>
   </tr>
   <tr>
-    <td rowspan="4"><a href="#WRF-Hydro"><b>WRF-Hydro</b></a></td>
+    <td rowspan="12"><a href="#WRF-Hydro"><b>WRF-Hydro</b></a></td>
     <td rowspan="12">LDASOUT</td>
     <td>deltaACCET</td>
-    <td>deltaACSNOW</td>
-    <td>deltaSNEQV</td>
-    <td>deltaSOILM</td>
-    <td>deltaUGDRNOFF</td>
-    <td>deltaSOILM_depthmean</td>
-    <td>avgSNEQV</td>
-    <td>avgSOILM</td>
-    <td>avgSOILM_depthmean</td>
-    <td>avgSOILM_wltadj_depthmean</td>
-    <td>avgSOILSAT</td>
-    <td>avgSOILSAT_wltadj_top1</td>
+    <td>2D</td>
+    <td>grid</td>
     <td rowspan="4"><a href="https://www.sciencebase.gov/catalog/item/661039a6d34e6334665050f4">WRF-Hydro forced CONUS404-BA NHDPLUSV2</a></td>
+  </tr>
+  <tr>
+    <td>deltaACSNOW</td>
+    <td>2D</td>
+    <td>grid</td>
+  </tr>
+  <tr>
+    <td>deltaSNEQV</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>deltaSOILM</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>deltaUGDRNOFF</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>deltaSOILM_depthmean</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>avgSNEQV</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>avgSOILM</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>avgSOILM_depthmean</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>avgSOILM_wltadj_depthmean</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>avgSOILSAT</td>
+    <td>2D</td>
+    <td>grid</td>      
+  </tr>
+  <tr>
+    <td>avgSOILSAT_wltadj_top1</td>
+    <td>2D</td>
+    <td>grid</td>      
   </tr>
   <tr>
     <td>CHRTOUT</td>
