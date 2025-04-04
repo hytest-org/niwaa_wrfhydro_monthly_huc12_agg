@@ -57,8 +57,6 @@ Run the shell script.
 ```
 Repeat for other variables. 
 
-
-
 ## Multiple Years at Once: 
 
 Ensure paths in shell script and slurm file are correct. 
