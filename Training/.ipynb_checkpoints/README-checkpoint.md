@@ -122,7 +122,7 @@ The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS
 <a id="Aggregations"></a>
 <h3>Aggregating to HUC12s</h3>
 
-There is a python aggregation script for each data type: 1-Dimensional and 2-Dimensional. These scripts need the correct environment installed, found in the yml file titled wrfhydro_huc12_agg.
+There is a python aggregation script for each data type: 1-Dimensional and 2-Dimensional. These scripts need the correct environment installed, found in the yml file titled wrfhydro_huc12_agg. In addition to variables differing by dimension, they also differ by resolution. This requires different HUC12 grid sizes to be used in the aggregation. 
 
 <table>
   <tr>
@@ -244,23 +244,12 @@ There is a python aggregation script for each data type: 1-Dimensional and 2-Dim
   </tr>
 </table>
 
-
-
-
-### Note: the model inputs have different grid resoultions 
-There are different grid resolutions available in HUC12 data release to use depending on model input being used. 
-
 <a id="Merge"></a>
 <h3>Merge 1D & 2D datasets</h3>
+
+Once the aggregations are complete, the 1D and 2D outputs will need to be merged together into 1 netcdf. 
 
 <a id="Format"></a>
 <h3>Format final outputs</h3>
 
-
-
-
-
-
-## WILTING
-There are fundamental differences in soil saturation representation between NHM-PRMS forced w/ C404 BA and WRFHydro forced w/ C404BA
-wilting variables are being produced using Wrfhydro outputs in order to compare directly to NHM-PRMS modeling applications
+The merged file is put through formatting techniques. Variable names are clarified, character HUCID's are added, data types are modified, and netcdf metadata is added. 
