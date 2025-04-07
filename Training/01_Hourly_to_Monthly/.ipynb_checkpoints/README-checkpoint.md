@@ -15,30 +15,55 @@ To keep processing times low, this workflow has been parallelized. There are 4 v
 | WRF-Hydro | GWOUT | Calendar Year | hourly | nco_process_gwout.sh | gwout_nco.slurm |
 | WRF-Hydro | CHRTOUT | Calendar Year | hourly | nco_process_chrtout.sh | chrtout_nco.slurm |
 
-## Script Preparations:
-##### nco_process_ldasout.sh
+## LDASOUT:
+#### nco_process_ldasout.sh
+##### Script Preparations:
 You will need to specify three paths: 
   - The location of the 3-hourly WRF-Hydro output LDASOUT files.
   - The location of the static soil properties file.
   - The location of where to save the monthly outputs.
+##### Overview:
+-Process porosity & wilting point parameters
+-Process accumulated flux & state differences
+-Process mean states
+-Cleanup names
 
-##### nco_process_gwout.sh
+## GWOUT:
+#### nco_process_gwout.sh
+##### Script Preparations:
 You will need to specify two paths: 
   - The location of the hourly WRF-Hydro output GWOUT files.
   - The location of where to save the monthly outputs.
 *Note: this script has some additional lines of code to deal with filetypes in the depth variable. Renaming the variable seems to fix this bug. Another option is to use older version of the NCO module- this has not been explored yet.
+##### Overview:
+-Process accumulated flux & state differences
+-Rename "depth" column to "bucket_depth"
+-Process sums and means
+-Process flow totals
+-Process depth average
+-Cleanup names
 
-##### nco_process_clim.sh
+## LDASIN:
+#### nco_process_clim.sh
+##### Script Preparations:
 You will need to specify two paths: 
   - The location of the hourly CONUS404-BA output LDASIN files.
   - The location of where to save the monthly outputs.
 *Note: this script has some additional lines of code to deal with this data being organized by Water Year.
+##### Overview:
+-Create totals and averages
+-Cleanup names
 
-##### nco_process_chrtout.sh
+## CHRTOUT:
+#### nco_process_chrtout.sh
+##### Script Preparations:
 You will need to specify two paths: 
   - The location of the hourly WRF-Hydro output CHRTOUT files.
   - The location of where to save the monthly outputs.
-  
+##### Overview:
+-Create totals and averages
+-Clean names
+
 ## One Year at a Time: 
 
 Load netcdf operator
@@ -47,7 +72,7 @@ module load nco
 ```
 Ensure paths in shell script are correct. 
 
-Allow edit permission for the shell script:
+Allow edit permission for the shell script, the shell files should be green after running this:
 ```
 chmod +x /path/to/yourscript.sh
 ```
@@ -59,13 +84,13 @@ Repeat for other variables.
 
 ## Multiple Years at Once: 
 
-Ensure paths in shell script and slurm file are correct. 
+Ensure paths in shell scripts and slurm files are correct.  
 
 Allow edit permission for the shell script:
 ```
 chmod +x /path/to/yourscript.sh
 ```
-Launch slurm script with an array of years of interest, 2011-2013 is used here. 
+Launch slurm script with an array of years of interest, 2011-2013 is used here. Adjust name of slurm file based on which WRF-Hydro output is being processed. 
 ```
 sbatch --array=2011-2013 ldasout_nco.slurm
 ```
@@ -77,3 +102,4 @@ If you need to cancel the request:
 ```
 scancel <jobid>
 ```
+Repeat for other variables.

@@ -72,7 +72,7 @@ module load nco
 ```
 Ensure paths in shell script are correct. 
 
-Allow edit permission for the shell script:
+Allow edit permission for the shell script, the shell files should be green after running this:
 ```
 chmod +x /path/to/yourscript.sh
 ```
@@ -84,13 +84,13 @@ Repeat for other variables.
 
 ## Multiple Years at Once: 
 
-Ensure paths in shell script and slurm file are correct. 
+Ensure paths in shell scripts and slurm files are correct.  
 
 Allow edit permission for the shell script:
 ```
 chmod +x /path/to/yourscript.sh
 ```
-Launch slurm script with an array of years of interest, 2011-2013 is used here. 
+Launch slurm script with an array of years of interest, 2011-2013 is used here. Adjust name of slurm file based on which WRF-Hydro output is being processed. 
 ```
 sbatch --array=2011-2013 ldasout_nco.slurm
 ```
@@ -102,3 +102,4 @@ If you need to cancel the request:
 ```
 scancel <jobid>
 ```
+Repeat for other variables.

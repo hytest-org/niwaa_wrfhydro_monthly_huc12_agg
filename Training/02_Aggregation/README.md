@@ -9,7 +9,7 @@ The input data for this workflow consist of the WRF-Hydro modeling application m
 ## Overview 
 Tracking computation times for a 3 year subset of WRF-Hydro modeling application on USGS Hovenweep system.
 
-| **Script** | **Description** | **Datasets processed** | **Dask** | **Time to complete** | **Output** | 
+| **Script** | **Description** | **Datasets processed** | **Dask** | **Completion Time** | **Output** | 
 | ------ | ------ | ------ | ------ | ------ | ------ |
 | 1-2D_spatial_aggregation | Aggregation to HUC12s of 2-Dimensional variables | monthly LDASOUT & LDASIN | Yes | XXX | XXX |
 | 2-1D_spatial_aggregation | Aggregation to HUC12s of 1-Dimensional variables | monthly GWOUT & CHRTOUT | No | XXX | XXX |
