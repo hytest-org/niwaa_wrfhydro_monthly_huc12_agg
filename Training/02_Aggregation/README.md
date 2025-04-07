@@ -20,11 +20,11 @@ Tracking computation times for a 3 year subset of WRF-Hydro modeling application
 ## Compute Environment Needs
 The python script and notebooks require a conda environment file to be created and activated before running. **wrfhydro_huc12_agg.yml** is the environment file needed to run the aggregation portion of the workflow. 
 ```
-# cd to folder containing gdptools-env.yml and create the environment.
-conda env create -f environment.yml
+# cd to folder containing wrfhydro_huc12_agg.yml and create the environment.
+conda env create -f wrfhydro_huc12_agg.yml
 
 # activate conda environment
-conda activate gdptools-env
+conda activate wrfhydro_huc12_agg
 ```
 Since this portion of the workflow utilizes Dask, it is important that the correct resources are allocated. The method used by the HyTEST team leverages the OnDemand Jupyter Notebook launcher hosted on [ARC HPC Portal](https://hpcportal.cr.usgs.gov/). When launching a jupyter notebook session, be sure to select **cpu** as the nodetype, a total of **2 cores**, and at least **150GB** of memory. This method allows you to enter the file path to where the clone of this repository is, as well as select an environment to activate. 
 
