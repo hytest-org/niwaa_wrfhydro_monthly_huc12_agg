@@ -8,12 +8,12 @@ NCO is required for this workflow: [netCDF Operator](https://nco.sourceforge.net
 
 To keep processing times low, this workflow has been parallelized. There are 4 variables that need to be converted from hourly to monthly: LDASOUT, LDASIN, CHRTOUT, and GWOUT. Each variable has a shell script that does the hourly to monthly calculations. These can be run for a single year or called into a slurm file to run multiple years at once. 
 
-| **Source** | **File** | **File Structure** | **Time Step** | **Shell Script** | **Slurm file** |
-| ------ | ------ | ------ | ------ | ------ | ------ |
-| WRF-Hydro | LDASOUT | Calendar Year | 3-hourly | nco_process_ldasout.sh | ldasout_nco.slurm |
-| CONUS404-BA | LDASIN | Water Year | hourly | nco_process_clim.sh | clim_nco.slurm |
-| WRF-Hydro | GWOUT | Calendar Year | hourly | nco_process_gwout.sh | gwout_nco.slurm |
-| WRF-Hydro | CHRTOUT | Calendar Year | hourly | nco_process_chrtout.sh | chrtout_nco.slurm |
+| **Source** | **File** | **File Structure** | **Time Step** | **Shell Script** | **Slurm file** | **Processing Time** |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| WRF-Hydro | LDASOUT | Calendar Year | 3-hourly | nco_process_ldasout.sh | ldasout_nco.slurm | XXX |
+| CONUS404-BA | LDASIN | Water Year | hourly | nco_process_clim.sh | clim_nco.slurm | XXX |
+| WRF-Hydro | GWOUT | Calendar Year | hourly | nco_process_gwout.sh | gwout_nco.slurm | XXX |
+| WRF-Hydro | CHRTOUT | Calendar Year | hourly | nco_process_chrtout.sh | chrtout_nco.slurm | XXX |
 
 ## LDASOUT:
 #### nco_process_ldasout.sh
