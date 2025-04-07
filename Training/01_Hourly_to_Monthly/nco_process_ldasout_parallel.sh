@@ -1,32 +1,31 @@
 #!/bin/bash
 # ###########################################################################
 # Bash shell script to create monthly aggregates of WRF-Hydro LDASOUT files.
-# Requirements: NCO (tested with version 5.1.4)
+# Requirements: NCO (tested with version 5.2.9)
 #               https://nco.sourceforge.net/
 # Usage: Call shell script with a single argument specifying the 4-digit
 #        year to process
 #        e.g., ./nco_process_ldasout.sh 2009
 # Developed: 06/11/2024, A. Dugger
-# Updated: 2/18/2025, L. Staub
+# Updated: 4/7/2025, L. Staub
 # ###########################################################################
 
 # ###########################################################################
 # USER-SPECIFIED INPUTS:
 
-# Specify WRF-Hydro output directory:
-# (assumes files are organized by water year)
-# indir_base="/path/to/input/files/"
-# soilparm="/path/to/soil_properties_file.nc"
+# Specify WRF-Hydro output directories:
+# indir_base="/path/to/input/files/" #LDASOUT files
+# soilparm="/path/to/soil_properties_file.nc" #soil properties static files
 
-indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASOUT_hr"
-soilparm="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_soil_properties_CONUS_1km_NIWAAv1.0.nc"
+indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT"
+soilparm="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/static_niwaa_wrf_hydro_files/WRFHydro_soil_properties_CONUS_1km_NIWAAv1.0.nc"
 
 
 # Specify output directory where monthly files should be written:
 # (output files will be named water_YYYYMM.nc)
 # outdir="/path/to/monthly/output/files/"
 
-outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASOUT_mo"
+outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly"
 
 # Check if the folder exists/create one
 if [ ! -d "$outdir" ]; then
