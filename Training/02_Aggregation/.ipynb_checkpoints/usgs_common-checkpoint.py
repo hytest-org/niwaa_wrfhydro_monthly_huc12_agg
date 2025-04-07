@@ -3,7 +3,6 @@
     This script is inialized to store common datasets, variables, and functions 
     for use in the USGS_Water water budget processing workflow.
     Author: Aubrey Dugger
-    Updated: Leah Staub 4/7/2025
 '''
 
 # --- Import Modules --- #
