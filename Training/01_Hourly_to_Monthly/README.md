@@ -8,37 +8,62 @@ NCO is required for this workflow: [netCDF Operator](https://nco.sourceforge.net
 
 To keep processing times low, this workflow has been parallelized. There are 4 variables that need to be converted from hourly to monthly: LDASOUT, LDASIN, CHRTOUT, and GWOUT. Each variable has a shell script that does the hourly to monthly calculations. These can be run for a single year or called into a slurm file to run multiple years at once. 
 
-| **Source** | **File** | **File Structure** | **Time Step** | **Shell Script** | **Slurm file** |
-| ------ | ------ | ------ | ------ | ------ | ------ |
-| WRF-Hydro | LDASOUT | Calendar Year | 3-hourly | nco_process_ldasout.sh | ldasout_nco.slurm |
-| CONUS404-BA | LDASIN | Water Year | hourly | nco_process_clim.sh | clim_nco.slurm |
-| WRF-Hydro | GWOUT | Calendar Year | hourly | nco_process_gwout.sh | gwout_nco.slurm |
-| WRF-Hydro | CHRTOUT | Calendar Year | hourly | nco_process_chrtout.sh | chrtout_nco.slurm |
+| **Source** | **File** | **File Structure** | **Time Step** | **Shell Script** | **Slurm file** | **Processing Time** |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| WRF-Hydro | LDASOUT | Calendar Year | 3-hourly | nco_process_ldasout.sh | ldasout_nco.slurm | XXX |
+| CONUS404-BA | LDASIN | Water Year | hourly | nco_process_clim.sh | clim_nco.slurm | XXX |
+| WRF-Hydro | GWOUT | Calendar Year | hourly | nco_process_gwout.sh | gwout_nco.slurm | XXX |
+| WRF-Hydro | CHRTOUT | Calendar Year | hourly | nco_process_chrtout.sh | chrtout_nco.slurm | XXX |
 
-## Script Preparations:
-##### nco_process_ldasout.sh
+## LDASOUT:
+#### nco_process_ldasout.sh
+##### Script Preparations:
 You will need to specify three paths: 
   - The location of the 3-hourly WRF-Hydro output LDASOUT files.
   - The location of the static soil properties file.
   - The location of where to save the monthly outputs.
+##### Overview:
+-Process porosity & wilting point parameters
+-Process accumulated flux & state differences
+-Process mean states
+-Cleanup names
 
-##### nco_process_gwout.sh
+## GWOUT:
+#### nco_process_gwout.sh
+##### Script Preparations:
 You will need to specify two paths: 
   - The location of the hourly WRF-Hydro output GWOUT files.
   - The location of where to save the monthly outputs.
 *Note: this script has some additional lines of code to deal with filetypes in the depth variable. Renaming the variable seems to fix this bug. Another option is to use older version of the NCO module- this has not been explored yet.
+##### Overview:
+-Process accumulated flux & state differences
+-Rename "depth" column to "bucket_depth"
+-Process sums and means
+-Process flow totals
+-Process depth average
+-Cleanup names
 
-##### nco_process_clim.sh
+## LDASIN:
+#### nco_process_clim.sh
+##### Script Preparations:
 You will need to specify two paths: 
   - The location of the hourly CONUS404-BA output LDASIN files.
   - The location of where to save the monthly outputs.
 *Note: this script has some additional lines of code to deal with this data being organized by Water Year.
+##### Overview:
+-Create totals and averages
+-Cleanup names
 
-##### nco_process_chrtout.sh
+## CHRTOUT:
+#### nco_process_chrtout.sh
+##### Script Preparations:
 You will need to specify two paths: 
   - The location of the hourly WRF-Hydro output CHRTOUT files.
   - The location of where to save the monthly outputs.
-  
+##### Overview:
+-Create totals and averages
+-Clean names
+
 ## One Year at a Time: 
 
 Load netcdf operator
@@ -47,7 +72,7 @@ module load nco
 ```
 Ensure paths in shell script are correct. 
 
-Allow edit permission for the shell script:
+Allow edit permission for the shell script, the shell files should be green after running this:
 ```
 chmod +x /path/to/yourscript.sh
 ```
@@ -59,13 +84,13 @@ Repeat for other variables.
 
 ## Multiple Years at Once: 
 
-Ensure paths in shell script and slurm file are correct. 
+Ensure paths in shell scripts and slurm files are correct.  
 
 Allow edit permission for the shell script:
 ```
 chmod +x /path/to/yourscript.sh
 ```
-Launch slurm script with an array of years of interest, 2011-2013 is used here. 
+Launch slurm script with an array of years of interest, 2011-2013 is used here. Adjust name of slurm file based on which WRF-Hydro output is being processed. 
 ```
 sbatch --array=2011-2013 ldasout_nco.slurm
 ```
@@ -77,3 +102,129 @@ If you need to cancel the request:
 ```
 scancel <jobid>
 ```
+Repeat for other variables.
+
+## Results
+The following metrics will be generated with these scripts: 
+<table>
+  <tr>
+    <th>Source</th>
+    <th>File</th>
+    <th>Variable</th>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td rowspan="19"><a href="#WRF-Hydro"><b>WRF-Hydro</b></a></td>
+    <td rowspan="12">LDASOUT</td>
+    <td>deltaACCET</td>
+    <td>ET change</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>deltaACSNOW</td>
+    <td>Snowfall change</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>deltaSNEQV</td>
+    <td>SWE change</td>
+    <td>---</td>    
+  </tr>
+  <tr>
+    <td>deltaSOILM</td>
+    <td>Soil Water change</td>
+    <td>---</td>      
+  </tr>
+  <tr>
+    <td>deltaUGDRNOFF</td>
+    <td>Recharge change</td>
+    <td>---</td>   
+  </tr>
+  <tr>
+    <td>deltaSOILM_depthmean</td>
+    <td>---</td>
+    <td>---</td>    
+  </tr>
+  <tr>
+    <td>avgSNEQV</td>
+    <td>SWE average</td>
+    <td>---</td>  
+  </tr>
+  <tr>
+    <td>avgSOILM</td>
+    <td>Soil Water average</td>
+    <td>---</td>   
+  </tr>
+  <tr>
+    <td>avgSOILM_depthmean</td>
+    <td>---</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>avgSOILM_wltadj_depthmean</td>
+    <td>---</td>
+    <td>---</td>    
+  </tr>
+  <tr>
+    <td>avgSOILSAT</td>
+    <td>Soil Saturation average</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>avgSOILSAT_wltadj_top1</td>
+    <td>---</td>
+    <td>---</td>     
+  </tr>
+  <tr>
+    <td rowspan="4">GWOUT</td>
+    <td>totOutflow</td>
+    <td>---</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>totInflow</td>
+    <td>---</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>deltaDepth</td>
+    <td>---</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>bucket_depth</td>
+    <td>Ground Water Store</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td rowspan="3">CHRTOUT</td>
+    <td>totqBucket</td>
+    <td>Baseflow</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>totqSfcLatRunoff</td>
+    <td>Surfaceflow</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>totStreamflow</td>
+    <td>---</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td rowspan="2"><a href="#CONUS404-BA"><b>CONUS404-BA</b></a></td>
+    <td rowspan="2">LDASIN</td>
+    <td>totPRECIP</td>
+    <td>Precipitation</td>
+    <td>---</td>
+  </tr>
+    <td>avgT2D</td>
+    <td>Temperature</td>
+    <td>---</td>    
+  </tr>
+</table>
+
+
+

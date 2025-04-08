@@ -1,13 +1,13 @@
 #!/bin/bash
 ############################################################################
 # Bash shell script to create monthly aggregates of WRF-Hydro forcing files.
-# Requirements: NCO (tested with version 5.1.4)
+# Requirements: NCO (tested with version 5.2.9)
 #               https://nco.sourceforge.net/
 # Usage: Call shell script with a single argument specifying the 4-digit
 #        year to process
 #        e.g., ./nco_process_clim.sh 2009
 # Developed: 06/11/2024, A. Dugger
-# Updated: 2/19/2025 L. Staub
+# Updated: 4/7/2025 L. Staub
 ############################################################################
 
 ############################################################################
@@ -17,13 +17,13 @@
 # (assumes forcings are organized by water year)
 #indir_base="/path/to/met/forcings/"
 
-indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASIN_hr"
+indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN"
 
 # Specify output directory where monthly files should be written:
 # (output files will be named clim_YYYYMM.nc)
 #outdir="/path/to/monthly/output/files/"
 
-outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_LDASIN_mo"
+outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly"
 
 
 ############################################################################
@@ -79,7 +79,7 @@ for mo in $(seq 1 1 12); do
     infiles_list=`echo "${infiles[*]}"`
 
     # Create totals and averages.
-    # Start with recip (sum) and temperature (average).
+    # Start with precip (sum) and temperature (average).
     ncra -O -h -y ttl -v RAINRATE ${infiles_list} ${outfile}
     ncap2 -O -s "RAINRATE=float(RAINRATE*3600)" ${outfile} ${outfile}
     ncra -O -h -y avg -v T2D ${infiles_list} ${tmpfile}

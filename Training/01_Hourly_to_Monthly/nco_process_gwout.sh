@@ -1,13 +1,13 @@
 #!/bin/bash
 # ###########################################################################
 # Bash shell script to create monthly aggregates of WRF-Hydro GWOUT files.
-# Requirements: NCO (tested with version 5.1.4)
+# Requirements: NCO (tested with version 5.2.9)
 #               https://nco.sourceforge.net/
 # Usage: Call shell script with a single argument specifying the 4-digit
 #        year to process
 #        e.g., ./nco_process_gwout.sh 2009
 # Developed: 06/11/2024, A. Dugger
-# Updated: 3/18/2024 L.Staub 
+# Updated: 4/7/2025 L.Staub 
 # ###########################################################################
 
 # ###########################################################################
@@ -15,12 +15,12 @@
 
 # Specify WRF-Hydro output directory:
 #indir_base="/path/to/input/files"
-indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_GWOUT_hr"
+indir_base="/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/GWOUT"
 
 # Specify output directory where monthly files should be written:
 # (output files will be named gw_YYYYMM.nc)
 #outdir="/path/to/monthly/output/files"
-outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/subset_GWOUT_mo"
+outdir="/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly"
 
 # Check if the folder exists/create one
 if [ ! -d "$outdir" ]; then
@@ -55,12 +55,6 @@ for mo in $(seq 1 1 12); do
   echo "  Processing month ${mo}"
   MM=`printf %02d ${mo}`
 
-  # # Calculate water year for finding folder name.
-  # wy_yr=${yr}
-  # if [ "${mo}" -ge 10 ]; then
-  #    wy_yr=`echo "${wy_yr} + 1" | bc`
-  # fi
-
   # Calculate next year and month for diff calculations
   next_yr=${yr}
   next_mo=`echo "${mo} + 1" | bc`
@@ -68,12 +62,6 @@ for mo in $(seq 1 1 12); do
      next_mo=1
      next_yr=`echo "${yr} + 1" | bc`
   fi
-
-  # # Calculate next water year
-  # next_wy_yr=${wy_yr}
-  # if [ "${mo}" -eq 9 ]; then
-  #    next_wy_yr=`echo "${next_wy_yr} + 1" | bc`
-  # fi
 
   # Setup some print variables
   MM2=`printf %02d ${next_mo}`

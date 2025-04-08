@@ -122,134 +122,14 @@ The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS
 <a id="Aggregations"></a>
 <h3>Aggregating to HUC12s</h3>
 
-There is a python aggregation script for each data type: 1-Dimensional and 2-Dimensional. These scripts need the correct environment installed, found in the yml file titled wrfhydro_huc12_agg. In addition to variables differing by dimension, they also differ by resolution. This requires different HUC12 grid sizes to be used in the aggregation. 
-
-<table>
-  <tr>
-    <th>Source</th>
-    <th>File</th>
-    <th>Variables</th>
-    <th>Type</th>
-    <th>Grid</th>
-  </tr>
-  <tr>
-    <td rowspan="19"><a href="#WRF-Hydro"><b>WRF-Hydro</b></a></td>
-    <td rowspan="12">LDASOUT</td>
-    <td>deltaACCET</td>
-    <td>2D</td>
-    <td>grid</td>
-  </tr>
-  <tr>
-    <td>deltaACSNOW</td>
-    <td>2D</td>
-    <td>grid</td>
-  </tr>
-  <tr>
-    <td>deltaSNEQV</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>deltaSOILM</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>deltaUGDRNOFF</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>deltaSOILM_depthmean</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>avgSNEQV</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>avgSOILM</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>avgSOILM_depthmean</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>avgSOILM_wltadj_depthmean</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>avgSOILSAT</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td>avgSOILSAT_wltadj_top1</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-  <tr>
-    <td rowspan="4">GWOUT</td>
-    <td>totOutflow</td>
-    <td>1D</td>
-    <td>grid</td> 
-  </tr>
-  <tr>
-    <td>totInflow</td>
-    <td>1D</td>
-    <td>grid</td> 
-  </tr>
-  <tr>
-    <td>deltaDepth</td>
-    <td>1D</td>
-    <td>grid</td> 
-  </tr>
-  <tr>
-    <td>bucket_depth</td>
-    <td>1D</td>
-    <td>grid</td> 
-  </tr>
-  <tr>
-    <td rowspan="3">CHRTOUT</td>
-    <td>totqBucket</td>
-    <td>1D</td>
-    <td>grid</td> 
-  </tr>
-  <tr>
-    <td>totqSfcLatRunoff</td>
-    <td>1D</td>
-    <td>grid</td> 
-  </tr>
-  <tr>
-    <td>totStreamflow</td>
-    <td>1D</td>
-    <td>grid</td> 
-  </tr>
-  <tr>
-    <td rowspan="2"><a href="#CONUS404-BA"><b>CONUS404-BA</b></a></td>
-    <td rowspan="2">LDASIN</td>
-    <td>totPRECIP</td>
-    <td>2D</td>
-    <td>grid</td>  
-  </tr>
-    <td>avgT2D</td>
-    <td>2D</td>
-    <td>grid</td>      
-  </tr>
-</table>
+These scripts need the correct environment installed, found in the yml file titled wrfhydro_huc12_agg. There is a python aggregation script for each data type: 1-Dimensional and 2-Dimensional. Due to the differing dimensions of the data, different spatial datasets are used. The 2-Dimensional data is aggregated using a 1000 m grid raster while the 1-Dimensional data is aggregated with a crosswalk table that contains spatial data for each HUC ID. Spatial aggregations are done using the [flox](https://flox.readthedocs.io/en/latest/aggregations.html) python package. The functions that utilize this package can be found in the usgs_common.py python script. 
 
 <a id="Merge"></a>
 <h3>Merge 1D & 2D datasets</h3>
 
-Once the aggregations are complete, the 1D and 2D outputs will need to be merged together into 1 netcdf. 
+Once the aggregations are complete, the 1D and 2D outputs will need to be merged together into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This script also plots the different variables to see what the range of values looks like.
 
 <a id="Format"></a>
 <h3>Format final outputs</h3>
 
-The merged file is put through formatting techniques. Variable names are clarified, character HUCID's are added, data types are modified, and netcdf metadata is added. 
+The merged file is put through formatting techniques. Variable names are clarified, character HUCID's are added, and data types are modified. A 'yrmo' variable is added to provide an efficient way for R users to access the final datasets.
