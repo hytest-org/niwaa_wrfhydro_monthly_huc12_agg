@@ -34,118 +34,184 @@ Although the aggregation portion of this workflow does not use 150GB at all time
   <tr>
     <th>Source</th>
     <th>File</th>
-    <th>Variables</th>
+    <th>Variable</th>
+    <th>Name</th>
+    <th>Description</th>
     <th>Type</th>
-    <th>Grid</th>
+    <th>Spatial</th>
+    <th>In Publication</th>
   </tr>
   <tr>
     <td rowspan="19"><a href="#WRF-Hydro"><b>WRF-Hydro</b></a></td>
     <td rowspan="12">LDASOUT</td>
     <td>deltaACCET</td>
+    <td>ET change</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>
+    <td>1000 m grid</td>
+    <td>---</td>
   </tr>
   <tr>
     <td>deltaACSNOW</td>
+    <td>Snowfall change</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>
+    <td>1000 m grid</td>
+    <td>---</td>
   </tr>
   <tr>
     <td>deltaSNEQV</td>
+    <td>SWE change</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>
+    <td>---</td>      
   </tr>
   <tr>
     <td>deltaSOILM</td>
+    <td>Soil Water change</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>
+    <td>---</td>      
   </tr>
   <tr>
     <td>deltaUGDRNOFF</td>
+    <td>Recharge change</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>
+    <td>---</td>      
   </tr>
   <tr>
     <td>deltaSOILM_depthmean</td>
+    <td>---</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>
+    <td>---</td>      
   </tr>
   <tr>
     <td>avgSNEQV</td>
+    <td>SWE average</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>
+    <td>Yes</td>      
   </tr>
   <tr>
     <td>avgSOILM</td>
+    <td>Soil Water average</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>     
+    <td>Yes</td>   
   </tr>
   <tr>
     <td>avgSOILM_depthmean</td>
+    <td>---</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>     
+    <td>---</td> 
   </tr>
   <tr>
     <td>avgSOILM_wltadj_depthmean</td>
+    <td>---</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>
+    <td>Yes</td>      
   </tr>
   <tr>
     <td>avgSOILSAT</td>
+    <td>Soil Saturation average</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>      
+    <td>Yes</td>
   </tr>
   <tr>
     <td>avgSOILSAT_wltadj_top1</td>
+    <td>---</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td>  
+    <td>Yes</td>      
   </tr>
   <tr>
     <td rowspan="4">GWOUT</td>
     <td>totOutflow</td>
+    <td>---</td>
+    <td>---</td>
     <td>1D</td>
-    <td>grid</td> 
+    <td>crosswalk</td>
+    <td>---</td> 
   </tr>
   <tr>
     <td>totInflow</td>
+    <td>---</td>
+    <td>---</td>
     <td>1D</td>
-    <td>grid</td> 
+    <td>crosswalk</td>
+    <td>---</td> 
   </tr>
   <tr>
     <td>deltaDepth</td>
+    <td>---</td>
+    <td>---</td>
     <td>1D</td>
-    <td>grid</td> 
+    <td>crosswalk</td>
+    <td>---</td> 
   </tr>
   <tr>
     <td>bucket_depth</td>
+    <td>Ground Water Store</td>
+    <td>---</td>
     <td>1D</td>
-    <td>grid</td> 
+    <td>crosswalk</td> 
+    <td>Yes</td>
   </tr>
   <tr>
     <td rowspan="3">CHRTOUT</td>
     <td>totqBucket</td>
+    <td>Baseflow</td>
+    <td>---</td>
     <td>1D</td>
-    <td>grid</td> 
+    <td>crosswalk</td> 
+    <td>Yes</td>
   </tr>
   <tr>
     <td>totqSfcLatRunoff</td>
+    <td>Surfaceflow</td>
+    <td>---</td>
     <td>1D</td>
-    <td>grid</td> 
+    <td>crosswalk</td> 
+    <td>Yes</td>
   </tr>
   <tr>
     <td>totStreamflow</td>
+    <td>---</td>
+    <td>---</td>
     <td>1D</td>
-    <td>grid</td> 
+    <td>crosswalk</td> 
+    <td>---</td>
   </tr>
   <tr>
     <td rowspan="2"><a href="#CONUS404-BA"><b>CONUS404-BA</b></a></td>
     <td rowspan="2">LDASIN</td>
     <td>totPRECIP</td>
+    <td>Precipitation</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>  
+    <td>1000 m grid</td>  
+    <td>Yes</td>
   </tr>
     <td>avgT2D</td>
+    <td>Temperature</td>
+    <td>---</td>
     <td>2D</td>
-    <td>grid</td>      
+    <td>1000 m grid</td> 
+    <td>---</td>     
   </tr>
 </table>
