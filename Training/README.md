@@ -11,7 +11,7 @@ There are 4 major processes:
 4. <a href="#Format"><b>Format final outputs</b></a>
 
 ## Input Data
-The following input files are needed for this workflow. A 3 year subset of these inputs has been downloaded to the HyTEST hovenweep area. Descriptions and download links are provided in the table below:
+The following input files are needed for this workflow. A 3-year subset of these inputs has been downloaded to the HyTEST hovenweep area. Descriptions and download links are provided in the table below:
 
 <table>
   <tr>
@@ -98,20 +98,19 @@ Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordin
 <a id="CONUS404-BA"></a>
 <h3>CONUS404-BA Background</h3>
 
-[CONUS404](https://www.sciencebase.gov/catalog/item/6372cd09d34ed907bf6c6ab1) is a high resolution hydro-climate dataset used for forcing hydrological models and covers 43 years of data at 4km resolution. Two separate fields (2-meter air temperature and precipitation) in this dataset had biases identified, leading to the development of a new product [CONUS404-BA](https://www.sciencebase.gov/catalog/item/64f77acad34ed30c20544c18). This dataset has downscaled the CONUS404 dataset from 4km to 1km, and bias adjusted the 2-meter air temperature and precipitation fields using Daymet version 3 as the background observational reference. This workflow uses the precipitation and rainrate fields from the CONUS404-BA output (LDASIN).  
+[CONUS404](https://www.sciencebase.gov/catalog/item/6372cd09d34ed907bf6c6ab1) is a high resolution hydro-climate dataset used for forcing hydrological models and covers 43 years of data at 4kilometer resolution. Two separate fields (2-meter air temperature and precipitation) in this dataset had biases identified, leading to the development of a new product [CONUS404-BA](https://www.sciencebase.gov/catalog/item/64f77acad34ed30c20544c18). This dataset has downscaled the CONUS404 dataset from 4 kilometer to 1 kilometer, and bias adjusted the 2-meter air temperature and precipitation fields using Daymet version 3 as the background observational reference. This workflow uses the precipitation and rainrate fields from the CONUS404-BA output (LDASIN). The following image was provided by David Gochis:
 
 ![Screenshot](images/CONUS404-BA.png)
 
 <a id="HUC12s"></a>
 <h3>WBD HUC12s Background</h3>
 
-The twelve-digit hydrologic unit codes (HUCs) are derived within the Watershed Boundary Dataset (WBD) and are part of a nested spatial unit system. Each drainage area is considered a Hydrologic Unit (HU) and is given a Hydrologic Unit Code (HUC) which serves as the unique identifier for the area. HUC 2s, 6s, 8s, 10s, & 12s, define the drainage Regions, Subregions, Basins, Subbasins, Watersheds and Subwatersheds, respectively, across the United States. Their boundaries are defined by hydrologic and topographic criteria that delineate an area of land upstream that drain to a specific point on a river. The United States congress has assigned the USGS, along with other Federal agencies, to assess national water availability every five years under the SECURE Water Act. The HUC12 spatial unit is of interest because it is the reporting unit to perform this assessment through the [National Integrated Water Availability Assessments](https://pubs.usgs.gov/publication/pp1894A) (NIWAAs). 
+The twelve-digit hydrologic unit codes (HUCs) are derived from the Watershed Boundary Dataset (WBD) and are part of a nested spatial unit system. Each drainage area is considered a Hydrologic Unit (HU) and is given a Hydrologic Unit Code (HUC) which serves as the unique identifier for the area. HUC 2s, 4s, 6s, 8s, 10s, & 12s, define the drainage Regions, Subregions, Basins, Subbasins, Watersheds and Subwatersheds, respectively, across the United States. Their boundaries are defined by hydrologic and topographic criteria that delineate an area of land upstream that drain to a specific point on a river. The United States Congress has assigned the USGS, along with other Federal agencies, to assess national water availability every five years under the [SECURE Water Act](https://www.doi.gov/ocl/hearings/111/SECUREWaterAct_031610). The HUC12 spatial unit is of interest because it is the reporting unit to perform this assessment through the [National Integrated Water Availability Assessments](https://pubs.usgs.gov/publication/pp1894A) (NIWAAs). 
 
 ![Screenshot](images/WBD_HUC12.png)
 
 ## Compute Environment Needs
-The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised of 12 years of hourly data (2009-2011). The following information was gathered to better understand computational needs:
-There are three leap years during this time span (2012, 2016, and 2020). There are 4 WRF-Hydro modeling application output file types used in this workflow: LDASOUT, LDASIN, CHRTOUT, and GWOUT. LDASOUT, CHRTOUT, and GWOUT each have 1 netcdf file for each hour in a day (24 files per day) while LDASOUT has 1 netcdf for every 3 hours (8 files per day). 
+The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised of 12 years of hourly data (2009-2011). There are 4 WRF-Hydro modeling application output file types used in this workflow: LDASOUT, LDASIN, CHRTOUT, and GWOUT. LDASOUT, CHRTOUT, and GWOUT each have 1 netcdf file for each hour in a day (24 files per day) while LDASOUT has 1 netcdf for every 3 hours (8 files per day). Additionally, there are three leap years during this time span (2012, 2016, and 2020). The following information was gathered to better understand computational needs: 
 
 | **Source** | **File** | **File Structure** | **Time Step** | **Total Number of Files** | **Size** |
 | ------ | ------ | ------ | ------ | ------ | ------ |
@@ -120,9 +119,9 @@ There are three leap years during this time span (2012, 2016, and 2020). There a
 | WRF-Hydro | GWOUT | Calendar Year | hourly | ~105,192 | ~21,000 GB |
 | WRF-Hydro | CHRTOUT | Calendar Year | hourly | ~105,192 | ~21,000 GB |
 
-There are roughly ~350,640 files used as inputs to this workflow that will take up at least 70,000 GBs worth of storage space. Because of these file sizes, this workflow was developed using High Processing Computer (HPC) systems. To save on storage space, a three year subset of these data was downloaded to the USGS HPC system, Hovenweep. The workflow in this repository is currently set up to run on this temporal subset of data (2011, 2012, and 2013) but can be modified to include a larger time scale.
+There are roughly ~350,640 files used as inputs to this workflow that will take up at least 70 TBs worth of storage space. Because of these file sizes, this workflow was developed using High Performance Computing (HPC) systems. If this is the first time HPC systems are being used, an account will need to be [requested](https://hpcportal.cr.usgs.gov/index.html). It is highly encouraged that new users attend [HPC101 Training](https://hpcportal.cr.usgs.gov/training/index.html) before beginning work on HPC systems. To save on storage space, a 3-year subset of these data was downloaded to the USGS HPC system, Hovenweep. The workflow in this repository is currently set up to run on this temporal subset of data (2011, 2012, and 2013) but can be modified to include a larger time span.
 
-The temporal aggregation portion of this workflow requires a module called Netcdf Operator (NCO). The spatial aggregation portion of this workflow requires a python environment yml file to be installed. 
+The temporal aggregation part of this workflow requires a module called Netcdf Operator (NCO). The spatial aggregation portion of this workflow requires a python environment yml file to be installed. 
 
 <a id="Hourly to Monthly"></a>
 <h3>Temporal Aggregation</h3>
@@ -132,7 +131,7 @@ The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS
 <a id="Aggregations"></a>
 <h3>Spatial Aggregation</h3>
 
-These scripts need the correct environment installed, found in the conda environment file titled [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml). Instructions for installing the environment can be found in the README documentation in the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. There is a python aggregation script for each data type: [1-Dimensional](02_Spatial_Aggregation/01_2D_spatial_aggregation.ipynb) and [2-Dimensional](02_Spatial_Aggregation/02_1D_spatial_aggregation.ipynb). Due to the differing dimensions of the data, different spatial datasets are used. The 2-Dimensional data is aggregated using a 1000 m grid raster while the 1-Dimensional data is aggregated with a crosswalk table that contains spatial data for each HUC ID. Spatial aggregations are done using the [flox](https://flox.readthedocs.io/en/latest/aggregations.html) python package. The functions that utilize this package can be found in the [usgs_common.py](02_Spatial_Aggregation/usgs_common.py) python script. 
+These scripts need the correct environment installed, found in the conda environment file titled [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml). Instructions for installing the environment can be found in the README documentation in the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. There is a python aggregation script for each data type: [1-Dimensional](02_Spatial_Aggregation/01_2D_spatial_aggregation.ipynb) and [2-Dimensional](02_Spatial_Aggregation/02_1D_spatial_aggregation.ipynb). Due to the differing dimensions of the data, different spatial datasets are used. The 2-Dimensional data is aggregated using a 1000 m grid while the 1-Dimensional data is aggregated with a crosswalk table that contains spatial data for each HUC ID. Spatial aggregations are done using the [flox](https://flox.readthedocs.io/en/latest/aggregations.html) python package. The functions that utilize this package can be found in the [usgs_common.py](02_Spatial_Aggregation/usgs_common.py) python script. 
 
 1-Dimensional aggregation concept diagram
 ![Screenshot](images/1D_aggregation.png)
@@ -143,9 +142,9 @@ These scripts need the correct environment installed, found in the conda environ
 <a id="Merge"></a>
 <h3>Merge 1D & 2D datasets</h3>
 
-Once the aggregations are complete, the 1D and 2D outputs will need to be merged together into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This process also plots the different variables to see what the range of values looks like. This process includes 1 jupyter notebook titled [03_Merge_1D_and_2D_files.ipynb](02_Spatial_Aggregation/03_Merge_1D_and_2D_files.ipynb) that can be can be found within the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in the spatial aggregation portion of this workflow.   
+Once the aggregations are complete, the 1D and 2D outputs will need to be merged into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This process also plots the different variables to see what the range of values looks like. This process includes 1 jupyter notebook titled [03_Merge_1D_and_2D_files.ipynb](02_Spatial_Aggregation/03_Merge_1D_and_2D_files.ipynb) that can be can be found within the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in the spatial aggregation portion of this workflow.   
 
 <a id="Format"></a>
 <h3>Format final outputs</h3>
 
-This process ensures the merged file is put through formatting techniques. Variable names are clarified, character HUCID's are added, and data types are modified. A 'yrmo' variable is added to provide an efficient way for R users to access the final datasets. This process includes 1 jupyter notebook titled [04_Finalize.ipynb](02_Spatial_Aggregation/04_Finalize.ipynb) and can be found int the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in for the spatial aggregation portion of this workflow.
+This process ensures the merged netCDF file is formatted by clarifying variable names, adding character HUCID's, and modifying data types. A 'yrmo' variable is added as a place for year/month information to be stored and to provide an efficient way for R users to access the final datasets. This process includes 1 jupyter notebook titled [04_Finalize.ipynb](02_Spatial_Aggregation/04_Finalize.ipynb) and can be found int the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in for the spatial aggregation portion of this workflow.
