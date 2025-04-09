@@ -1,0 +1,55 @@
+Job started at Tue Apr  8 16:59:15 CDT 2025
+Job finished at Tue Apr  8 16:59:15 CDT 2025
+Total job runtime: 0 seconds.
+Folder created: /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly
+rm: cannot remove 'tmpf9ea8ae8-f04d-4771-a310-5ed270bbdb19.nc': No such file or directory
+rm: cannot remove 'paramsf9ea8ae8-f04d-4771-a310-5ed270bbdb19.nc': No such file or directory
+Processing year 2012
+  Processing month 1
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201201.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201201010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201201312100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 2
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201202.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201202010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201202292100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 3
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201203.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201203010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201203312100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 4
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201204.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201204010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201204302100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 5
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201205.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201205010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201205312100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 6
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201206.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201206010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201206302100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 7
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201207.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201207010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201207312100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 8
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201208.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201208010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201208312100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 9
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201209.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201209010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201209302100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 10
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201210.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201210010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201210312100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 11
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201211.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201211010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201211302100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.
+  Processing month 12
+rm: cannot remove '/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/water_201212.nc': No such file or directory
+      /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201212010000.LDASOUT_DOMAIN1 /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASOUT/RAW2012/201212312100.LDASOUT_DOMAIN1
+      Missing files. Skipping month.

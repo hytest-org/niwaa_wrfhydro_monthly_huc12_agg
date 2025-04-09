@@ -1,7 +1,7 @@
 # Aggregating the WRF-Hydro Modeling Application output to twelve-digit hydrologic unit codes (HUC12s)
 **Workflow Authors:** Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR)
 
-This workflow is a combination of shell scripts and jupyter notebooks that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the CONtiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the National Integrated Water Availability Assessment (NIWAA) reports, the 10 year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
+This workflow is a combination of shell scripts (.sh) and jupyter notebooks (.ipynb) that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the contiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the National Integrated Water Availability Assessment (NIWAA) Water Budget reports, the 10-year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
 
 ## Workflow Overview
 There are 4 major processes: 
@@ -18,8 +18,8 @@ The following input files are needed for this workflow. A 3 year subset of these
     <td colspan="5" align="center"><b>*/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data</b></td>
   </tr>
   <tr>  
-    <th>Dataset</th>
-    <th>Model Output</th>
+    <th>WRF-Hydro Outputs</th>
+    <th>Input</th>
     <th>Description</th>
     <th>Source</th>
     <th>*Hovenweep Location</th>
@@ -83,9 +83,15 @@ The following input files are needed for this workflow. A 3 year subset of these
 
 ![Screenshot](images/wrf-hydro_logo.png)
 
-The Weather Research and Forecasting Hydrological modeling system ([WRF-Hydro](https://ral.ucar.edu/projects/wrf_hydro)) provides water budget estimates across space and time by linking process models of the atmosphere and terrestrial hydrology. The image below has the output files organized by model physics component with the files used in this workflow highlighted.
+The Weather Research and Forecasting Hydrological modeling system ([WRF-Hydro](https://ral.ucar.edu/projects/wrf_hydro)) provides water budget estimates across space and time by linking process-based hydrologic, and hydraulic routing models of the atmosphere and terrestrial hydrology. The image below shows WRF-Hydro output files organized by model physics component with the files used in this workflow highlighted. 
+
+The image below shows WRF-Hydro output files organized by model physics component with the files used in this workflow highlighted.
 
 ![Screenshot](images/wrf-hydro_outputs2.png)
+
+The image below shows a conceptual diagram created by Aubrey Dugger that shows how the WRF-Hydro National IWAA Configuration water budget was calculated. 
+
+![Screenshot](images/WRF-Hydro_WBM.png)
 
 Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordings](https://doimspp.sharepoint.com/sites/gs-wma-hytest/SitePages/WRF-Hydro-Modeling-System-Hands-on-Tutorial.aspx?xsdata=MDV8MDJ8fDRlMzY5NWMwMTU1MzRiYzEyZjNkMDhkZDcxMzA3YjVmfDA2OTNiNWJhNGIxODRkN2I5MzQxZjMyZjQwMGE1NDk0fDB8MHw2Mzg3OTExNzUxOTg2ODI5NDF8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKV0lqb2lNQzR3TGpBd01EQWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazkwYUdWeUlpd2lWMVFpT2pFeGZRPT18MXxMMk5vWVhSekx6RTVPamcwTlRNME1EQmhMVEF5WldRdE5HVXpPUzFoTW1VMkxUZGhOMlJoWWpsak5UYzBaVjlsWWpVME1UazRNeTAwWVdSaUxUUTNZbU10WVRZeFpTMWhNR1V6WVdRMVl6a3hNV05BZFc1eExtZGliQzV6Y0dGalpYTXZiV1Z6YzJGblpYTXZNVGMwTXpVeU1EY3hPRGc1TWc9PXw1ZTFlYjM2NzA4MWQ0YjZiY2NkNjA4ZGQ3MTMwN2I1Y3w0OTYwODE5NzFjMmQ0ZWMyOTA5MmVlNmVhMzE1OWEyZA%3D%3D&sdata=UDZvaGNyMktQcXZic3pDdmI5NEpOUFhkdnhCNjZOVTlzYll3cmk1OTM4UT0%3D&ovuser=0693b5ba-4b18-4d7b-9341-f32f400a5494%2Clstaub%40usgs.gov&OR=Teams-HL&CT=1743697590477&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNTAzMTMyMTAxMiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D) are a great resource and [this document](https://ral.ucar.edu/sites/default/files/docs/water/wrf-hydro-v511-technical-description.pdf) provides even more technical details! This workflow uses the land model (LDASOUT), stream channel routing (CHRTOUT), and conceptual groundwater (GWOUT) outputs from a version of the WRF-Hydro Modeling system that is forced with CONUS404-BA.
 
@@ -97,11 +103,11 @@ Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordin
 <a id="HUC12s"></a>
 <h3>WBD HUC12s Background</h3>
 
-The twelve-digit hydrologic unit codes (HUCs) are derived within the Watershed Boundary Dataset (WBD) and are part of a nested spatial unit system. Each drainage area is considered a Hydrologic Unit (HU) and is given a Hydrologic Unit Code (HUC) which serves as the unique identifier for the area. HUC 2s, 6s, 8s, 10s, & 12s, define the drainage Regions, Subregions, Basins, Subbasins, Watersheds and Subwatersheds, respectively, across the United States. Their boundaries are defined by hydrologic and topographic criteria that delineate an area of land upstream from a specific point on a river. The United States congress has assigned the USGS, along with other Federal agencies, to assess national water availability every five years under the SECURE Water Act. The HUC12 spatial unit is of interest because it is the reporting unit used by the [National Integrated Water Availability Assessments](https://pubs.usgs.gov/publication/pp1894A) (NIWAAs). 
+The twelve-digit hydrologic unit codes (HUCs) are derived within the Watershed Boundary Dataset (WBD) and are part of a nested spatial unit system. Each drainage area is considered a Hydrologic Unit (HU) and is given a Hydrologic Unit Code (HUC) which serves as the unique identifier for the area. HUC 2s, 6s, 8s, 10s, & 12s, define the drainage Regions, Subregions, Basins, Subbasins, Watersheds and Subwatersheds, respectively, across the United States. Their boundaries are defined by hydrologic and topographic criteria that delineate an area of land upstream that drain to a specific point on a river. The United States congress has assigned the USGS, along with other Federal agencies, to assess national water availability every five years under the SECURE Water Act. The HUC12 spatial unit is of interest because it is the reporting unit to perform this assessment through the [National Integrated Water Availability Assessments](https://pubs.usgs.gov/publication/pp1894A) (NIWAAs). 
 
 ## Compute Environment Needs
 The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised of 12 years of hourly data (2009-2011). The following information was gathered to better understand computational needs:
-There are three leap years during this time span (2012, 2016, and 2020). There are 4 variables total: LDASOUT, LDASIN, CHRTOUT, and GWOUT. LDASOUT, CHRTOUT, and GWOUT each have 1 netcdf file for each hour in a day (24 files per day) while LDASOUT has 1 netcdf for every 3 hours (8 files per day). 
+There are three leap years during this time span (2012, 2016, and 2020). There are 4 WRF-Hydro modeling application output file types used in this workflow: LDASOUT, LDASIN, CHRTOUT, and GWOUT. LDASOUT, CHRTOUT, and GWOUT each have 1 netcdf file for each hour in a day (24 files per day) while LDASOUT has 1 netcdf for every 3 hours (8 files per day). 
 
 | **Source** | **File** | **File Structure** | **Time Step** | **Total Number of Files** | **Size** |
 | ------ | ------ | ------ | ------ | ------ | ------ |
@@ -112,24 +118,24 @@ There are three leap years during this time span (2012, 2016, and 2020). There a
 
 There are roughly ~350,640 files used as inputs to this workflow that will take up at least 70,000 GBs worth of storage space. Because of these file sizes, this workflow was developed using High Processing Computer (HPC) systems. To save on storage space, a three year subset of these data was downloaded to the USGS HPC system, Hovenweep. The workflow in this repository is currently set up to run on this temporal subset of data (2011, 2012, and 2013) but can be modified to include a larger time scale.
 
-The hourly to monthly summarization portion of this workflow is in need of a module called Netcdf Operator (NCO). The aggregation portion of this workflow requires a python environment yml file to be installed. 
+The temporal aggregation portion of this workflow requires a module called Netcdf Operator (NCO). The spatial aggregation portion of this workflow requires a python environment yml file to be installed. 
 
 <a id="Hourly to Monthly"></a>
-<h3>Hourly to Monthly Summaries</h3>
+<h3>Temporal Aggregation</h3>
 
-The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS404-BA forcing variable subset LDASIN are summarized from hourly to mothly time steps. There is 1 shell script for each variable to be processed, with each one utilizing the NCO module. 
+The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS404-BA forcing variable subset LDASIN are summarized from hourly to mothly time steps. There is 1 shell script for each variable to be processed, with each one utilizing the NCO module. The [01_Temporal_Aggregation](01_Temporal_Aggregation/) folder contains a README document with instructions for using NCO and running these scripts on the USGS HPC Hovenweep system. Each shell script can be run using the srun command for a single year, or each they can be called from within a slurm file to run multiple years at once.   
 
 <a id="Aggregations"></a>
-<h3>Aggregating to HUC12s</h3>
+<h3>Spatial Aggregation</h3>
 
-These scripts need the correct environment installed, found in the yml file titled wrfhydro_huc12_agg. There is a python aggregation script for each data type: 1-Dimensional and 2-Dimensional. Due to the differing dimensions of the data, different spatial datasets are used. The 2-Dimensional data is aggregated using a 1000 m grid raster while the 1-Dimensional data is aggregated with a crosswalk table that contains spatial data for each HUC ID. Spatial aggregations are done using the [flox](https://flox.readthedocs.io/en/latest/aggregations.html) python package. The functions that utilize this package can be found in the usgs_common.py python script. 
+These scripts need the correct environment installed, found in the conda environment file titled [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml). Instructions for installing the environment can be found in the README documentation in the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. There is a python aggregation script for each data type: [1-Dimensional](02_Spatial_Aggregation/01_2D_spatial_aggregation.ipynb) and [2-Dimensional](02_Spatial_Aggregation/02_1D_spatial_aggregation.ipynb). Due to the differing dimensions of the data, different spatial datasets are used. The 2-Dimensional data is aggregated using a 1000 m grid raster while the 1-Dimensional data is aggregated with a crosswalk table that contains spatial data for each HUC ID. Spatial aggregations are done using the [flox](https://flox.readthedocs.io/en/latest/aggregations.html) python package. The functions that utilize this package can be found in the [usgs_common.py](02_Spatial_Aggregation/usgs_common.py) python script. 
 
 <a id="Merge"></a>
 <h3>Merge 1D & 2D datasets</h3>
 
-Once the aggregations are complete, the 1D and 2D outputs will need to be merged together into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This script also plots the different variables to see what the range of values looks like.
+Once the aggregations are complete, the 1D and 2D outputs will need to be merged together into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This process also plots the different variables to see what the range of values looks like. This process includes 1 jupyter notebook titled [03_Merge_1D_and_2D_files.ipynb](02_Spatial_Aggregation/03_Merge_1D_and_2D_files.ipynb) that can be can be found within the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in the spatial aggregation portion of this workflow.   
 
 <a id="Format"></a>
 <h3>Format final outputs</h3>
 
-The merged file is put through formatting techniques. Variable names are clarified, character HUCID's are added, and data types are modified. A 'yrmo' variable is added to provide an efficient way for R users to access the final datasets.
+This process ensures the merged file is put through formatting techniques. Variable names are clarified, character HUCID's are added, and data types are modified. A 'yrmo' variable is added to provide an efficient way for R users to access the final datasets. This process includes 1 jupyter notebook titled [04_Finalize.ipynb](02_Spatial_Aggregation/04_Finalize.ipynb) and can be found int the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in for the spatial aggregation portion of this workflow.

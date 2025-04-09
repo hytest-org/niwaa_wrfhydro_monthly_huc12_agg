@@ -1,0 +1,89 @@
+Job started at Tue Apr  8 16:59:15 CDT 2025
+Job finished at Tue Apr  8 16:59:15 CDT 2025
+Total job runtime: 0 seconds.
+mkdir: cannot create directory ‘/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly’: File exists
+Processing year 2012
+  Processing month 1
+      Found 744 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201201010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201201312300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201201.nc
+      Done aggregating hourly values : 2012-01  1249 seconds since start time.
+  Processing month 2
+      Found 696 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201202010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201202292300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201202.nc
+      Done aggregating hourly values : 2012-02  1218 seconds since start time.
+  Processing month 3
+      Found 744 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201203010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201203312300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201203.nc
+      Done aggregating hourly values : 2012-03  1288 seconds since start time.
+  Processing month 4
+      Found 720 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201204010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201204302300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201204.nc
+      Done aggregating hourly values : 2012-04  1171 seconds since start time.
+  Processing month 5
+      Found 744 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201205010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201205312300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201205.nc
+      Done aggregating hourly values : 2012-05  1204 seconds since start time.
+  Processing month 6
+      Found 720 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201206010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201206302300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201206.nc
+      Done aggregating hourly values : 2012-06  1157 seconds since start time.
+  Processing month 7
+      Found 744 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201207010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201207312300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201207.nc
+      Done aggregating hourly values : 2012-07  1223 seconds since start time.
+  Processing month 8
+      Found 744 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201208010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201208312300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201208.nc
+      Done aggregating hourly values : 2012-08  1198 seconds since start time.
+  Processing month 9
+      Found 720 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201209010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2012//201209302300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201209.nc
+      Done aggregating hourly values : 2012-09  1147 seconds since start time.
+  Processing month 10
+      Found 744 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2013//201210010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2013//201210312300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201210.nc
+      Done aggregating hourly values : 2012-10  1226 seconds since start time.
+  Processing month 11
+      Found 720 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2013//201211010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2013//201211302300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201211.nc
+      Done aggregating hourly values : 2012-11  1225 seconds since start time.
+  Processing month 12
+      Found 744 files
+      Processing sums and means
+      first /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2013//201212010000.LDASIN_DOMAIN1
+      last /caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/LDASIN/WY2013//201212312300.LDASIN_DOMAIN1
+      output /caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/monthly/clim_201212.nc
+      Done aggregating hourly values : 2012-12  1336 seconds since start time.
