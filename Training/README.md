@@ -1,7 +1,7 @@
 # Aggregating the WRF-Hydro Modeling Application output to twelve-digit hydrologic unit codes (HUC12s)
 **Workflow Authors:** Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR)
 
-This workflow is a combination of shell scripts (.sh) and jupyter notebooks (.ipynb) that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the contiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the National Integrated Water Availability Assessment (NIWAA) Water Budget reports, the 10-year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
+This workflow is a combination of shell scripts (.sh) and jupyter notebooks (.ipynb) that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the contiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the USGS National Integrated Water Availability Assessment (NIWAA) Water Budget reports, the 10-year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d). The purpose of the NIWAA reports is to document trends and vulnerabilities in water resources and look at changes in the water budget.
 
 ## Workflow Overview
 There are 4 major processes: 
@@ -18,7 +18,7 @@ The following input files are needed for this workflow. A 3 year subset of these
     <td colspan="5" align="center"><b>*/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data</b></td>
   </tr>
   <tr>  
-    <th>WRF-Hydro Outputs</th>
+    <th>Source</th>
     <th>Input</th>
     <th>Description</th>
     <th>Source</th>
@@ -100,10 +100,14 @@ Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordin
 
 [CONUS404](https://www.sciencebase.gov/catalog/item/6372cd09d34ed907bf6c6ab1) is a high resolution hydro-climate dataset used for forcing hydrological models and covers 43 years of data at 4km resolution. Two separate fields (2-meter air temperature and precipitation) in this dataset had biases identified, leading to the development of a new product [CONUS404-BA](https://www.sciencebase.gov/catalog/item/64f77acad34ed30c20544c18). This dataset has downscaled the CONUS404 dataset from 4km to 1km, and bias adjusted the 2-meter air temperature and precipitation fields using Daymet version 3 as the background observational reference. This workflow uses the precipitation and rainrate fields from the CONUS404-BA output (LDASIN).  
 
+![Screenshot](images/CONUS404-BA.png)
+
 <a id="HUC12s"></a>
 <h3>WBD HUC12s Background</h3>
 
 The twelve-digit hydrologic unit codes (HUCs) are derived within the Watershed Boundary Dataset (WBD) and are part of a nested spatial unit system. Each drainage area is considered a Hydrologic Unit (HU) and is given a Hydrologic Unit Code (HUC) which serves as the unique identifier for the area. HUC 2s, 6s, 8s, 10s, & 12s, define the drainage Regions, Subregions, Basins, Subbasins, Watersheds and Subwatersheds, respectively, across the United States. Their boundaries are defined by hydrologic and topographic criteria that delineate an area of land upstream that drain to a specific point on a river. The United States congress has assigned the USGS, along with other Federal agencies, to assess national water availability every five years under the SECURE Water Act. The HUC12 spatial unit is of interest because it is the reporting unit to perform this assessment through the [National Integrated Water Availability Assessments](https://pubs.usgs.gov/publication/pp1894A) (NIWAAs). 
+
+![Screenshot](images/WBD_HUC12.png)
 
 ## Compute Environment Needs
 The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised of 12 years of hourly data (2009-2011). The following information was gathered to better understand computational needs:
@@ -129,6 +133,12 @@ The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS
 <h3>Spatial Aggregation</h3>
 
 These scripts need the correct environment installed, found in the conda environment file titled [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml). Instructions for installing the environment can be found in the README documentation in the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. There is a python aggregation script for each data type: [1-Dimensional](02_Spatial_Aggregation/01_2D_spatial_aggregation.ipynb) and [2-Dimensional](02_Spatial_Aggregation/02_1D_spatial_aggregation.ipynb). Due to the differing dimensions of the data, different spatial datasets are used. The 2-Dimensional data is aggregated using a 1000 m grid raster while the 1-Dimensional data is aggregated with a crosswalk table that contains spatial data for each HUC ID. Spatial aggregations are done using the [flox](https://flox.readthedocs.io/en/latest/aggregations.html) python package. The functions that utilize this package can be found in the [usgs_common.py](02_Spatial_Aggregation/usgs_common.py) python script. 
+
+1-Dimensional aggregation concept diagram
+![Screenshot](images/1D_aggregation.png)
+
+2-Dimensional aggregation concept diagram
+![Screenshot](images/2D_aggregation.png)
 
 <a id="Merge"></a>
 <h3>Merge 1D & 2D datasets</h3>
