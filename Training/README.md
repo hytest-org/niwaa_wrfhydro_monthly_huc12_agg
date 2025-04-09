@@ -133,11 +133,7 @@ The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS
 
 These scripts need the correct environment installed, found in the conda environment file titled [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml). Instructions for installing the environment can be found in the README documentation in the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. There is a python aggregation script for each data type: [1-Dimensional](02_Spatial_Aggregation/01_2D_spatial_aggregation.ipynb) and [2-Dimensional](02_Spatial_Aggregation/02_1D_spatial_aggregation.ipynb). Due to the differing dimensions of the data, different spatial datasets are used. The 2-Dimensional data is aggregated using a 1000 m grid while the 1-Dimensional data is aggregated with a crosswalk table that contains spatial data for each HUC ID. Spatial aggregations are done using the [flox](https://flox.readthedocs.io/en/latest/aggregations.html) python package. The functions that utilize this package can be found in the [usgs_common.py](02_Spatial_Aggregation/usgs_common.py) python script. 
 
-1-Dimensional aggregation concept diagram
-![Screenshot](images/1D_aggregation.png)
-
-2-Dimensional aggregation concept diagram
-![Screenshot](images/2D_aggregation.png)
+![Screenshot](images/1Dand2Daggregation.png)
 
 <a id="Merge"></a>
 <h3>Merge 1D & 2D datasets</h3>
