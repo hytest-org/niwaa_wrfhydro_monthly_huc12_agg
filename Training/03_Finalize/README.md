@@ -11,9 +11,8 @@ Tracking computation times for a 3-year subset of WRF-Hydro modeling application
 
 | **Script** | **Description** | **Datasets processed** | **Dask** | **Completion Time** | **Output** | 
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| 01_2D_spatial_aggregation | Aggregation to HUC12s of 2-Dimensional variables | monthly LDASOUT & LDASIN | Yes | 2 hours | CONUS_HUC12_2D_20111001_20120930.nc |
-| 02_1D_spatial_aggregation | Aggregation to HUC12s of 1-Dimensional variables | monthly GWOUT & CHRTOUT | No | 2.5 hours | CONUS_HUC12_1D_2011001_20120930.nc |
-| usgs_common | python script containg functions used in aggregation | --- | No | --- | --- |
+| 01_Merge_1D_and_2D_files | Combine 1-Dimensional and 2-Dimensional aggregations into one netcdf file | CONUS_HUC12_2D_20111001_20120930.nc & CONUS_HUC12_1D_2011001_20120930.nc | No | 10 min | CONUS_HUC12_WB_combined_19791001_20220930.nc |
+| 02_Format | Formatting | CONUS_HUC12_WB_combined_19791001_20220930.nc | No | 10 min | huc12_monthly_wb_iwaa_wrfhydro_WY2011_2013.nc |
 
 ## Compute Environment Needs
 Users will need to create and activate a conda environment using the [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml) file to run the python script and notebooks. For this environment to work, the latest version of Miniforge should be installed in the user area on Hovenweep. Miniconda may work, but has not been tested with this workflow. 
@@ -57,14 +56,13 @@ Since this portion of the workflow utilizes Dask, it is important that the corre
 *Note:* Although the aggregation part of this workflow does not always use 150GB, dask will need that memory for the 2-Dimensional aggregation script. 
 
 ## Instructions
-### 1. Set-up
-Confirm that the [usgs_common.py](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml) python script has the correct paths to the WRF-Hydro modeling application output static files under the "Domain Files" section. The paths currently are set up to point to the HyTEST directory on hovenweep where the 3-year subset of the data is stored. This script has multiple functions that are called into the 1-D and 2-D aggregation jupyter notebooks. 
 
-### 2. 2-D Aggregation
-The [2-Dimensional Aggregation jupyter notebook](02_Spatial_Aggregation/01_2D_spatial_aggregation.ipynb) aggregates the 2-Dimensional WRF-Hydro modeling application outputs LDASOUT (monthly outputs named water_YYYYMM.nc) and LDASIN (monthly outputs named clim_YYYYMM.nc) to HUC12 basins, using the 1000 m grid file. The file paths for the LDASOUT and LDASIN monthly data, the 1000 m HUC12 grid file, and the location for the 2D aggregated outputs to be stored will need to be specified. This script will spin up a dask cluster to parallelize the aggregation, a link to the dask dashboard is provided to monitor workers during calculations. Once this script has finished processing, the dask cluster will need to be spun down and closed. The product from this script will be 1 netCDF file containing the spatially aggregated outputs of the 2-Dimensional WRF-Hydro monthly modeling application outputs for the years 2011-2013.   
+### 1. Merge 
+The [Merge 1-D and 2-D jupyter notebook](03_Finalize/01_Merge_1D_and_2D_files.ipynb) combines the spatially aggregated outputs of the monthly 1-Dimensional & 2-Dimensional WRF-Hydro modeling application outputs into 1 netCDF file. This script also contains plots that allow the user to explore the range in values for each variable.  
 
-### 3. 1-D Aggregation
-The [1-Dimensional Aggregation jupyter notebook](02_Spatial_Aggregation/02_1D_spatial_aggregation.ipynb) aggregates the 1-Dimensional WRF-Hydro modeling application outputs GWOUT (monthly outputs named gw_YYYYMM.nc) and CHRTOUT (monthly outputs named chrtout_YYYYMM.nc) to HUC12 basins, using the crosswalk csv file. The file paths for the GWOUT and CHRTOUT monthly data, the HUC12 crosswalk file, and the location for the 1D aggregated outputs to be stored will need to be specified. The product from this script will be 1 netCDF file containing the spatially aggregated outputs of the 1-Dimensional WRF-Hydro monthly modeling application outputs for the years 2011-2013.
+### 2. Format
+The [Finalize jupyter notebook](03_Finalize/02_Finalize.ipynb) takes the merged output from step 4 and clarifies variable names, adds character HUCID's, and modifies data types. A 'yrmo' variable is added as a place for year/month information to be stored and to provide an efficient way for R users to access the final datasets. The output from this script is 1 netCDF file containing the monthly WRF-Hydro modeling application outputs aggregated to HUC12s for the years 2011-2013 that is comparable to the netCDF stored on this [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d) page where the original outputs of this workflow are stored. 
+  
 
 ## Variable Table
 <table>

@@ -7,8 +7,7 @@ This workflow is a combination of shell scripts (.sh) and jupyter notebooks (.ip
 There are 4 major processes: 
 1. <a href="#Hourly to Monthly"><b>Summarize variables from hourly to monthly</b></a>
 2. <a href="#Aggregations"><b>Aggregate variables to HUC12 basins</b></a>
-3. <a href="#Merge"><b>Merge 1-Dimensional and 2-Dimensional variable aggregations together</b></a>
-4. <a href="#Format"><b>Format final outputs</b></a>
+3. <a href="#Finalize"><b>Merge and format final outputs</b></a>
 
 ## Input Data
 The following input files are needed for this workflow. A 3-year subset of these inputs has been downloaded to the HyTEST hovenweep area. Descriptions and download links are provided in the table below:
@@ -135,12 +134,7 @@ These scripts need the correct environment installed, found in the conda environ
 
 ![Screenshot](images/1Dand2Daggregation.png)
 
-<a id="Merge"></a>
-<h3>Merge 1D & 2D Datasets</h3>
+<a id="Finalize"></a>
+<h3>Merge and Format</h3>
 
-Once the aggregations are complete, the 1D and 2D outputs will need to be merged into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This process also plots the different variables to see what the range of values looks like. This process includes 1 jupyter notebook titled [03_Merge_1D_and_2D_files.ipynb](02_Spatial_Aggregation/03_Merge_1D_and_2D_files.ipynb) that can be can be found within the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in the spatial aggregation portion of this workflow.   
-
-<a id="Format"></a>
-<h3>Format</h3>
-
-This process ensures the merged netCDF file is formatted by clarifying variable names, adding character HUCID's, and modifying data types. A 'yrmo' variable is added as a place for year/month information to be stored and to provide an efficient way for R users to access the final datasets. This process includes 1 jupyter notebook titled [04_Finalize.ipynb](02_Spatial_Aggregation/04_Finalize.ipynb) and can be found int the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in for the spatial aggregation portion of this workflow.
+Once the aggregations are complete, the 1D and 2D outputs will need to be merged into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This process also plots the different variables to see what the range of values looks like. This process includes 1 jupyter notebook titled [01_Merge_1D_and_2D_files.ipynb](03_Finalize/01_Merge_1D_and_2D_files.ipynb) that can be can be found within the [03_Finalize](02_Finalize/) folder. This process ensures the merged netCDF file is formatted by clarifying variable names, adding character HUCID's, and modifying data types. A 'yrmo' variable is added as a place for year/month information to be stored and to provide an efficient way for R users to access the final datasets. The formatting process includes 1 jupyter notebook titled [04_Finalize.ipynb](02_Spatial_Aggregation/02_Format.ipynb) and can be found in the [03_Finalize](02_Finalize/) folder.These scripts use the same environment requirements that are installed in the spatial aggregation portion of this workflow.   
