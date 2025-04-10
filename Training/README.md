@@ -123,18 +123,18 @@ There are roughly ~350,640 files used as inputs to this workflow that will take 
 The temporal aggregation part of this workflow requires a module called Netcdf Operator (NCO). The spatial aggregation portion of this workflow requires a python environment yml file to be installed. 
 
 <a id="Hourly to Monthly"></a>
-<h3>Temporal Aggregation</h3>
+<h3>1. Temporal Aggregation</h3>
 
 The WRF-Hydro modeling application outputs LDASOUT, CHRTOUT, GWOUT and the CONUS404-BA forcing variable subset LDASIN are summarized from hourly to mothly time steps. There is 1 shell script for each variable to be processed, with each one utilizing the NCO module. The [01_Temporal_Aggregation](01_Temporal_Aggregation/) folder contains a README document with instructions for using NCO and running these scripts on the USGS HPC Hovenweep system. Each shell script can be run using the srun command for a single year, or each they can be called from within a slurm file to run multiple years at once.   
 
 <a id="Aggregations"></a>
-<h3>Spatial Aggregation</h3>
+<h3>2. Spatial Aggregation</h3>
 
 These scripts need the correct environment installed, found in the conda environment file titled [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml). Instructions for installing the environment can be found in the README documentation in the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. There is a python aggregation script for each data type: [1-Dimensional](02_Spatial_Aggregation/01_2D_spatial_aggregation.ipynb) and [2-Dimensional](02_Spatial_Aggregation/02_1D_spatial_aggregation.ipynb). Due to the differing dimensions of the data, different spatial datasets are used. The 2-Dimensional data is aggregated using a 1000 m grid while the 1-Dimensional data is aggregated with a crosswalk table that contains spatial data for each HUC ID. Spatial aggregations are done using the [flox](https://flox.readthedocs.io/en/latest/aggregations.html) python package. The functions that utilize this package can be found in the [usgs_common.py](02_Spatial_Aggregation/usgs_common.py) python script. 
 
 ![Screenshot](images/1Dand2Daggregation.png)
 
 <a id="Finalize"></a>
-<h3>Merge and Format</h3>
+<h3>3. Merge and Format</h3>
 
 Once the aggregations are complete, the 1D and 2D outputs will need to be merged into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This process also plots the different variables to see what the range of values looks like. This process includes 1 jupyter notebook titled [01_Merge_1D_and_2D_files.ipynb](03_Finalize/01_Merge_1D_and_2D_files.ipynb) that can be can be found within the [03_Finalize](03_Finalize/) folder. This process ensures the merged netCDF file is formatted by clarifying variable names, adding character HUCID's, and modifying data types. A 'yrmo' variable is added as a place for year/month information to be stored and to provide an efficient way for R users to access the final datasets. The formatting process includes 1 jupyter notebook titled [02_Format.ipynb](02_Spatial_Aggregation/02_Format.ipynb) and can be found in the [03_Finalize](03_Finalize/) folder.These scripts use the same environment requirements that are installed in the spatial aggregation portion of this workflow.   
