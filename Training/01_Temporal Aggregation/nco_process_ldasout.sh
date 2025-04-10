@@ -72,7 +72,7 @@ for mo in $(seq 1 1 12); do
   MM=`printf %02d ${mo}`
 
   # Setup input directory and output filename.
-  indir="${indir_base}/RAW${yr}" 
+  indir="${indir_base}/${yr}" 
   outfile="${outdir}/water_${YYYY}${MM}.nc"
   rm $outfile
 

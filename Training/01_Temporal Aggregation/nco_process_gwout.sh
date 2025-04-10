@@ -128,7 +128,7 @@ done
     ncap2 -O -s "outflow=float(outflow*3600)" ${outfile} ${outfile}
     ncrename -h -v inflow,totInflow ${outfile}
     ncrename -h -v outflow,totOutflow ${outfile}
-    ncrename -h -v depth,avgDepth ${outfile}
+    ncrename -h -v depth,bucket_depth ${outfile}
 
     # Cleanup names and attributes.
     ncatted -O -h -a valid_range,,d,, ${outfile} ${outfile}
@@ -140,7 +140,7 @@ done
     ncatted -O -h -a units,totInflow,m,c,"m^3" ${outfile}
     ncatted -O -h -a units,totOutflow,m,c,"m^3" ${outfile}
     ncatted -O -h -a units,deltaDepth,m,c,"mm" ${outfile}
-    ncatted -O -h -a units,avgDepth,m,c,"mm" ${outfile}
+    ncatted -O -h -a units,bucket_depth,m,c,"mm" ${outfile}
 
     # Wrap up the month.
     end_time=`date -u +%s`

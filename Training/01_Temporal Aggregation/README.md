@@ -1,7 +1,7 @@
 # Summarizing the WRF-Hydro Modeling Application outputs from hourly to monthly. 
 **Workflow Authors:** Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR)
 
-WRF-Hydro Modeling Application outputs are provided at the hourly timescale while CONUS404-BA temperature and precipitation outputs are provided at the 3-hourly timescale. Many water budget components are summarized at the monthly scale because daily or hourly scales can promote noise. Monthly temporal resolution can also make it easier to identify patterns in the data. Additionally, NHM-PRMS data is at the monthly time scale, so summarizing WRF-Hydro outputs to a monthly time scale will make comparisons between the two models possible.   
+WRF-Hydro Modeling Application outputs are provided at the hourly time scale while CONUS404-BA temperature and precipitation outputs are provided at the 3-hour timescale. Many water-budget components are summarized at the monthly scale because daily or hourly scales may introduce unpredictable variation in model output. Monthly temporal resolution can also make it easier to identify patterns in the data. Additionally, NHM-PRMS data is at the monthly time scale, so summarizing WRF-Hydro outputs to a monthly time scale will make comparisons between the two models possible.   
 
 ## Overview
 NCO is required for this workflow: [netCDF Operator](https://nco.sourceforge.net/). USGS HPC Hovenweep has an NCO module set up that needs to be loaded before the workflow is run. 
@@ -19,7 +19,7 @@ To keep processing times low, this workflow has been parallelized. There are 4 v
 #### nco_process_ldasout.sh
 ##### Script Preparations:
 You will need to specify three paths: 
-  - The location of the 3-hourly WRF-Hydro output LDASOUT files.
+  - The location of the 3-hour WRF-Hydro output LDASOUT files.
   - The location of the static soil properties file.
   - The location of where to save the monthly outputs.
 ##### Overview:
@@ -113,116 +113,138 @@ The following metrics will be generated with these scripts:
     <th>Variable</th>
     <th>Name</th>
     <th>Description</th>
+    <th>Units</th>
   </tr>
   <tr>
     <td rowspan="19"><a href="#WRF-Hydro"><b>WRF-Hydro</b></a></td>
     <td rowspan="12">LDASOUT</td>
     <td>deltaACCET</td>
     <td>ET change</td>
-    <td>---</td>
+    <td>Total monthly evapotranspiration (land only)</td>
+    <td>mm</td>
   </tr>
   <tr>
     <td>deltaACSNOW</td>
     <td>Snowfall change</td>
-    <td>---</td>
+    <td>Total monthly snowfall (land only)</td>
+    <td>mm</td>
   </tr>
   <tr>
     <td>deltaSNEQV</td>
     <td>SWE change</td>
-    <td>---</td>    
+    <td>Average monthly snow water equivalent (land only)</td>
+    <td>mm</td>    
   </tr>
   <tr>
     <td>deltaSOILM</td>
     <td>Soil Water change</td>
-    <td>---</td>      
+    <td>Average monthly soil moisture in 2m soil column (land only)</td>
+    <td>mm</td>      
   </tr>
   <tr>
     <td>deltaUGDRNOFF</td>
     <td>Recharge change</td>
-    <td>---</td>   
+    <td>Total monthly recharge (land only)</td>
+    <td>mm</td>   
   </tr>
   <tr>
     <td>deltaSOILM_depthmean</td>
     <td>---</td>
+    <td>Change in depth-mean volumetric soil moisture, ratio of water volume to soil volume (month end minus month start) </td>
     <td>---</td>    
   </tr>
   <tr>
     <td>avgSNEQV</td>
     <td>SWE average</td>
-    <td>---</td>  
+    <td>Mean snow water equivalent </td>
+    <td>mm</td>  
   </tr>
   <tr>
     <td>avgSOILM</td>
     <td>Soil Water average</td>
-    <td>---</td>   
+    <td>Mean volumetric soil moisture by layer </td>
+    <td>m3/m3</td>   
   </tr>
   <tr>
     <td>avgSOILM_depthmean</td>
     <td>---</td>
+    <td>Average depth-mean volumetric soil moisture (ratio of water volume to soil volume) over month </td>
     <td>---</td>
   </tr>
   <tr>
     <td>avgSOILM_wltadj_depthmean</td>
-    <td>---</td>
-    <td>---</td>    
+    <td>---</td>  
+    <td>Average depth-mean volumetric soil moisture (ratio of water volume to soil volume) minus wilting point over month </td>
+    <td>---</td>  
   </tr>
   <tr>
     <td>avgSOILSAT</td>
     <td>Soil Saturation average</td>
-    <td>---</td>
+    <td>Average monthly fractional soil saturation in 2m soil column (land only) </td>
+    <td>---</td> 
   </tr>
   <tr>
     <td>avgSOILSAT_wltadj_top1</td>
-    <td>---</td>
+    <td>---</td> 
+    <td>Average fractional soil saturation above wilting point (soil moisture minus wilting point divided by maximum water content minus wilting point) over top layer (top 10cm) over month</td>
     <td>---</td>     
   </tr>
   <tr>
     <td rowspan="4">GWOUT</td>
     <td>totOutflow</td>
+    <td>Total outflow volume over month</td>
     <td>---</td>
-    <td>---</td>
+    <td>m3</td>
   </tr>
   <tr>
     <td>totInflow</td>
+    <td>Total inflow volume over month</td>
     <td>---</td>
-    <td>---</td>
+    <td>m3</td>
   </tr>
   <tr>
     <td>deltaDepth</td>
+    <td>Change in baseflow bucket storage (month end minus month start)</td>
     <td>---</td>
-    <td>---</td>
+    <td>mm</td>
   </tr>
   <tr>
     <td>bucket_depth</td>
     <td>Ground Water Store</td>
-    <td>---</td>
+    <td>Average monthly groundwater storage</td>
+    <td>mm</td>
   </tr>
   <tr>
     <td rowspan="3">CHRTOUT</td>
     <td>totqBucket</td>
     <td>Baseflow</td>
-    <td>---</td>
+    <td>Total monthly baseflow</td>
+    <td>mm</td>
   </tr>
   <tr>
     <td>totqSfcLatRunoff</td>
     <td>Surfaceflow</td>
-    <td>---</td>
+    <td>Total monthly surface flow</td>
+    <td>mm</td>
   </tr>
   <tr>
     <td>totStreamflow</td>
     <td>---</td>
-    <td>---</td>
+    <td>Total streamflow volume over month</td>
+    <td>m3</td>
   </tr>
   <tr>
     <td rowspan="2"><a href="#CONUS404-BA"><b>CONUS404-BA</b></a></td>
     <td rowspan="2">LDASIN</td>
     <td>totPRECIP</td>
     <td>Precipitation</td>
-    <td>---</td>
+    <td>Total monthly precipitation</td>
+    <td>mm</td>
   </tr>
     <td>avgT2D</td>
     <td>Temperature</td>
-    <td>---</td>    
+    <td>Average 2-m air temperature</td>  
+    <td>K</td>  
   </tr>
 </table>
 
