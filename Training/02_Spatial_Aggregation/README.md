@@ -164,6 +164,7 @@ The [Finalize jupyter notebook](02_Spatial_Aggregation/04_Finalize.ipynb) takes 
   </tr>
   <tr>
     <td>avgSOILM_depthmean</td>
+    <td>---</td>
     <td>Average depth-mean volumetric soil moisture (ratio of water volume to soil volume) over month </td>
     <td>---</td>
     <td>2D</td>
@@ -172,6 +173,7 @@ The [Finalize jupyter notebook](02_Spatial_Aggregation/04_Finalize.ipynb) takes 
   </tr>
   <tr>
     <td>avgSOILM_wltadj_depthmean</td>
+    <td>---</td>
     <td>Average depth-mean volumetric soil moisture (ratio of water volume to soil volume) minus wilting point over month </td>
     <td>---</td>
     <td>2D</td>

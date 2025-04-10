@@ -167,13 +167,15 @@ The following metrics will be generated with these scripts:
   </tr>
   <tr>
     <td>avgSOILM_depthmean</td>
+    <td>---</td>
     <td>Average depth-mean volumetric soil moisture (ratio of water volume to soil volume) over month </td>
     <td>---</td>
   </tr>
   <tr>
     <td>avgSOILM_wltadj_depthmean</td>
+    <td>---</td>  
     <td>Average depth-mean volumetric soil moisture (ratio of water volume to soil volume) minus wilting point over month </td>
-    <td>---</td>    
+    <td>---</td>  
   </tr>
   <tr>
     <td>avgSOILSAT</td>
