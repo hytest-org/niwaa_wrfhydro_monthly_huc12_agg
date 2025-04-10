@@ -1,7 +1,7 @@
 # Aggregating the WRF-Hydro Modeling Application output to twelve-digit hydrologic unit codes (HUC12s)
 **Workflow Authors:** Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR)
 
-This workflow is a combination of shell scripts (.sh) and jupyter notebooks (.ipynb) that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the contiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the USGS National Integrated Water Availability Assessment (NIWAA) Water Budget reports, the 10-year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d). The purpose of the NIWAA reports is to document trends and vulnerabilities in water resources and look at changes in the water budget.
+This workflow is a combination of shell scripts (.sh) and jupyter notebooks (.ipynb) that aggregate key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the contiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the USGS National Integrated Water Availability Assessment (NIWAA) Water-Budget reports, the 10-year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d). The purpose of the NIWAA reports is to document trends and vulnerabilities in water resources and look at changes in the water-budget.
 
 ## Workflow Overview
 There are 4 major processes: 
@@ -83,13 +83,13 @@ The following input files are needed for this workflow. A 3-year subset of these
 
 ![Screenshot](images/wrf-hydro_logo.png)
 
-The Weather Research and Forecasting Hydrological modeling system ([WRF-Hydro](https://ral.ucar.edu/projects/wrf_hydro)) provides water budget estimates across space and time by linking process-based hydrologic, and hydraulic routing models of the atmosphere and terrestrial hydrology. The image below shows WRF-Hydro output files organized by model physics component with the files used in this workflow highlighted. 
+The Weather Research and Forecasting Hydrological modeling system ([WRF-Hydro](https://ral.ucar.edu/projects/wrf_hydro)) provides water-budget estimates across space and time by linking process-based hydrologic, and hydraulic routing models of the atmosphere and terrestrial hydrology. The image below shows WRF-Hydro output files organized by model physics component with the files used in this workflow highlighted. 
 
 The image below shows WRF-Hydro output files organized by model physics component with the files used in this workflow highlighted.
 
 ![Screenshot](images/wrf-hydro_outputs2.png)
 
-The image below shows a conceptual diagram created by Aubrey Dugger that shows how the WRF-Hydro National IWAA Configuration water budget was calculated. 
+The image below shows a conceptual diagram created by Aubrey Dugger that shows how the WRF-Hydro National IWAA Configuration water-budget was calculated. 
 
 ![Screenshot](images/WRF-Hydro_WBM.png)
 

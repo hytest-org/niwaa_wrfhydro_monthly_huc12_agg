@@ -44,22 +44,22 @@ region_bboxes = {
 # --- Domain files --- #
 
 # NWM geogrid (LSM) file
-geogrid = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_geo_em.d01.CONUS_1km_NIWAAv1.0.nc'
+geogrid = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/static_niwaa_wrf_hydro_files/WRFHydro_geo_em.d01.CONUS_1km_NIWAAv1.0.nc'
 
 # NWM LDASOUT Spatial Metadata file - contains spatial metadata for the LSM grid
-geogrid_SM = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_GEOGRID_LDASOUT_Spatial_Metadata_CONUS_1km_NIWAAv1.0.nc'
+geogrid_SM = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/static_niwaa_wrf_hydro_files/WRFHydro_GEOGRID_LDASOUT_Spatial_Metadata_CONUS_1km_NIWAAv1.0.nc'
 
 # NWM Fulldom_hires netCDF file - contains routing variables on the routing grid
-fulldom = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_Fulldom_CONUS_250m_NIWAAv1.0.nc'
+fulldom = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/static_niwaa_wrf_hydro_files/WRFHydro_Fulldom_CONUS_250m_NIWAAv1.0.nc'
 
 # NWM channel routing parameters (RouteLink)
-chrt_parms = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_RouteLink_CONUS_NIWAAv1.0.nc'
+chrt_parms = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/static_niwaa_wrf_hydro_files/WRFHydro_RouteLink_CONUS_NIWAAv1.0.nc'
 
 # NWM groundwater bucket parameters (GWBUCKPARM)
-gw_parms = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_GWBUCKPARM_CONUS_NIWAAv1.0.nc'
+gw_parms = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/static_niwaa_wrf_hydro_files/WRFHydro_GWBUCKPARM_CONUS_NIWAAv1.0.nc'
 
 # Soil properties file
-soil_props = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/working/niwaa_wrfhydro_monthly_huc12_aggregations/static_niwaa_wrf_hydro_files/WRFHydro_soil_properties_CONUS_1km_NIWAAv1.0.nc'
+soil_props = r'/caldera/hovenweep/projects/usgs/water/impd/hytest/niwaa_wrfhydro_monthly_huc12_aggregations_sample_data/static_niwaa_wrf_hydro_files/WRFHydro_soil_properties_CONUS_1km_NIWAAv1.0.nc'
 
 # --- End Domain files --- #
 
