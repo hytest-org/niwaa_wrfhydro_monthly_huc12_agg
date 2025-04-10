@@ -1,7 +1,8 @@
-# Aggregating the WRF-Hydro Modeling Application output to twelve-digit hydrologic unit codes (HUC12s)
+# Finalizing the Spatially Aggregated WRF-Hydro Modeling Application outputs 
+
 **Workflow Authors:** Kevin Sampson and Aubrey Dugger at NSF National Center for Atmospheric Research (NCAR)
 
-The aggregation workflow consists of 1 python script and 4 jupyter notebooks. The python script houses various functions that the jupyter notebooks call to conduct calculations. This workflow aggregates key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the contiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the National Integrated Water Availability Assessment (NIWAA) reports, the 10-year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
+The aggregation workflow consists of 2 jupyter notebooks. The python script houses various functions that the jupyter notebooks call to conduct calculations. This workflow aggregates key variables from the 10-year WRF-Hydro Modeling Application forced with CONUS404-BA to the contiguous United States (CONUS) water boundary dataset (WBD) HUC12s for the years 2010-2021. Additional steps are included in this workflow that prepare the data for publication and make the outputs comparable to the [National Hydrologic Model/Precipitation-Runoff Modeling System (NHM/PRMS)](https://www.usgs.gov/mission-areas/water-resources/science/national-hydrologic-model-infrastructure) model outputs. Originally generated for the National Integrated Water Availability Assessment (NIWAA) reports, the 10-year WRF-Hydro modeling application outputs were aggregated to HUC12 catchments by Kevin Sampson and Aubrey Dugger using NCAR HPC systems and published to [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d).
 
 ## Input Data
 The input data for this workflow consist of the WRF-Hydro modeling application monthly summary outputs and static files. The monthly summaries are the outputs from the hourly to monthly section of this workflow. In addition to variables differing by dimension, they also differ by resolution. This requires different HUC12 grid sizes to be used in the aggregation. 
@@ -15,45 +16,7 @@ Tracking computation times for a 3-year subset of WRF-Hydro modeling application
 | 02_Format | Formatting | CONUS_HUC12_WB_combined_19791001_20220930.nc | No | 10 min | huc12_monthly_wb_iwaa_wrfhydro_WY2011_2013.nc |
 
 ## Compute Environment Needs
-Users will need to create and activate a conda environment using the [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml) file to run the python script and notebooks. For this environment to work, the latest version of Miniforge should be installed in the user area on Hovenweep. Miniconda may work, but has not been tested with this workflow. 
-
-#### Ensure Miniforge is installed
-```
-# check to see if miniforge is installed
-which conda
-
-# if it returned something like what is listed below, then miniforge is installed. 
-/home/youruser/miniforge3/bin/conda
-
-# if there is not miniforge listed, it will need to be installed
-```
-
-#### Installing Miniforge
-```
-# go to this link and make sure this is the latest version before entering into powershell console
-wget https://github.com/conda-forge/miniforge/releases/download/24.7.1-2/Miniforge3-24.7.1-2-Linux-x86_64.sh 
-
-# install
-bash Miniforge3-24.7.1-2-Linux-x86_64.sh 
-
-# be sure to type yes when prompted, it should be twice
-# close out of powershell and reopen to finish the installation process
-```
-
-#### Installing conda environment from wrfhydro_huc12_agg.yml file   
-```
-# cd to folder containing wrfhydro_huc12_agg.yml and create the environment.
-conda env create -f wrfhydro_huc12_agg.yml
-
-# activate conda environment
-conda activate wrfhydro_huc12_agg
-```
-Since this portion of the workflow utilizes Dask, it is important that the correct resources are allocated. The method used by the HyTEST team leverages the OnDemand Jupyter Notebook launcher hosted on [ARC HPC Portal](https://hpcportal.cr.usgs.gov/). When launching a jupyter notebook session, boxes can be selected that allow the repository file path is and the environment to be entered prior to launching a session. Be sure to enter the following information before launching a session:
-- **cpu** as the nodetype
-- request a total of **2 cores**
-- request at least **150GB** of memory. 
-
-*Note:* Although the aggregation part of this workflow does not always use 150GB, dask will need that memory for the 2-Dimensional aggregation script. 
+Users will need to create and activate a conda environment using the [wrfhydro_huc12_agg.yml](02_Spatial_Aggregation/wrfhydro_huc12_agg.yml) file to run the python script and notebooks. For this environment to work, the latest version of Miniforge should be installed in the user area on Hovenweep. Miniconda may work, but has not been tested with this workflow. See the README documentation in the [Spatial Aggregation](02_Spatial_Aggregation/) folder for first time environment set up instructions.  
 
 ## Instructions
 
@@ -61,7 +24,7 @@ Since this portion of the workflow utilizes Dask, it is important that the corre
 The [Merge 1-D and 2-D jupyter notebook](03_Finalize/01_Merge_1D_and_2D_files.ipynb) combines the spatially aggregated outputs of the monthly 1-Dimensional & 2-Dimensional WRF-Hydro modeling application outputs into 1 netCDF file. This script also contains plots that allow the user to explore the range in values for each variable.  
 
 ### 2. Format
-The [Finalize jupyter notebook](03_Finalize/02_Finalize.ipynb) takes the merged output from step 4 and clarifies variable names, adds character HUCID's, and modifies data types. A 'yrmo' variable is added as a place for year/month information to be stored and to provide an efficient way for R users to access the final datasets. The output from this script is 1 netCDF file containing the monthly WRF-Hydro modeling application outputs aggregated to HUC12s for the years 2011-2013 that is comparable to the netCDF stored on this [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d) page where the original outputs of this workflow are stored. 
+The [Finalize jupyter notebook](03_Finalize/02_Finalize.ipynb) takes the merged output from step 1 and clarifies variable names, adds character HUCID's, and modifies data types. A 'yrmo' variable is added as a place for year/month information to be stored and to provide an efficient way for R users to access the final datasets. The output from this script is 1 netCDF file containing the monthly WRF-Hydro modeling application outputs aggregated to HUC12s for the years 2011-2013 that is comparable to the netCDF stored on this [Science Base](https://www.sciencebase.gov/catalog/item/6411fd40d34eb496d1cdc99d) page where the original outputs of this workflow are stored. 
   
 
 ## Variable Table
