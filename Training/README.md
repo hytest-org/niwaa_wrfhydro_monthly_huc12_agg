@@ -105,7 +105,7 @@ Want to learn more about the WRF-Hydro Modeling System? [These tutorial recordin
 <a id="HUC12s"></a>
 <h3>WBD HUC12s Background</h3>
 
-The twelve-digit hydrologic unit codes (HUCs) are derived from the Watershed Boundary Dataset (WBD) and are part of a nested spatial unit system. Each drainage area is considered a Hydrologic Unit (HU) and is given a Hydrologic Unit Code (HUC) which serves as the unique identifier for the area. HUC 2s, 4s, 6s, 8s, 10s, & 12s, define the drainage Regions, Subregions, Basins, Subbasins, Watersheds and Subwatersheds, respectively, across the United States. Their boundaries are defined by hydrologic and topographic criteria that delineate an area of land upstream that drain to a specific point on a river. The United States Congress has assigned the USGS, along with other Federal agencies, to assess national water availability every five years under the [SECURE Water Act](https://www.doi.gov/ocl/hearings/111/SECUREWaterAct_031610). The HUC12 spatial unit is of interest because it is the reporting unit to perform this assessment through the [National Integrated Water Availability Assessments](https://pubs.usgs.gov/publication/pp1894A) (NIWAAs). 
+The [twelve-digit hydrologic unit codes (HUCs)](https://www.sciencebase.gov/catalog/item/63cb38b2d34e06fef14f40ad) used in this workflow are derived from the Watershed Boundary Dataset (WBD) and are part of a nested spatial unit system. Each drainage area is considered a Hydrologic Unit (HU) and is given a Hydrologic Unit Code (HUC) which serves as the unique identifier for the area. HUC 2s, 4s, 6s, 8s, 10s, & 12s, define the drainage Regions, Subregions, Basins, Subbasins, Watersheds and Subwatersheds, respectively, across the United States. Their boundaries are defined by hydrologic and topographic criteria that delineate an area of land upstream that drain to a specific point on a river. The United States Congress has assigned the USGS, along with other Federal agencies, to assess national water availability every five years under the [SECURE Water Act](https://www.doi.gov/ocl/hearings/111/SECUREWaterAct_031610). The HUC12 spatial unit is of interest because it is the reporting unit to perform this assessment through the [National Integrated Water Availability Assessments](https://pubs.usgs.gov/publication/pp1894A) (NIWAAs). 
 
 ![Screenshot](images/WBD_HUC12.png)
 
@@ -114,7 +114,7 @@ The 10-year WRF-Hydro Modeling Application forced with CONUS404-BA is comprised 
 
 | **Source** | **File** | **File Structure** | **Time Step** | **Total Number of Files** | **Size** |
 | ------ | ------ | ------ | ------ | ------ | ------ |
-| WRF-Hydro | LDASOUT | Calendar Year | 3-hourly | ~35,064 | ~7,000 GB |
+| WRF-Hydro | LDASOUT | Calendar Year | 3-hour | ~35,064 | ~7,000 GB |
 | CONUS404-BA | LDASIN | Water Year | hourly | ~105,192 | ~21,000 GB |
 | WRF-Hydro | GWOUT | Calendar Year | hourly | ~105,192 | ~21,000 GB |
 | WRF-Hydro | CHRTOUT | Calendar Year | hourly | ~105,192 | ~21,000 GB |
@@ -136,11 +136,11 @@ These scripts need the correct environment installed, found in the conda environ
 ![Screenshot](images/1Dand2Daggregation.png)
 
 <a id="Merge"></a>
-<h3>Merge 1D & 2D datasets</h3>
+<h3>Merge 1D & 2D Datasets</h3>
 
 Once the aggregations are complete, the 1D and 2D outputs will need to be merged into 1 netcdf using the [xarray](https://docs.xarray.dev/en/stable/generated/xarray.merge.html) python package. This process also plots the different variables to see what the range of values looks like. This process includes 1 jupyter notebook titled [03_Merge_1D_and_2D_files.ipynb](02_Spatial_Aggregation/03_Merge_1D_and_2D_files.ipynb) that can be can be found within the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in the spatial aggregation portion of this workflow.   
 
 <a id="Format"></a>
-<h3>Format final outputs</h3>
+<h3>Format</h3>
 
 This process ensures the merged netCDF file is formatted by clarifying variable names, adding character HUCID's, and modifying data types. A 'yrmo' variable is added as a place for year/month information to be stored and to provide an efficient way for R users to access the final datasets. This process includes 1 jupyter notebook titled [04_Finalize.ipynb](02_Spatial_Aggregation/04_Finalize.ipynb) and can be found int the [02_Spatial_Aggregation](02_Spatial_Aggregation/) folder. This script uses the same environment requirements that are installed in for the spatial aggregation portion of this workflow.
