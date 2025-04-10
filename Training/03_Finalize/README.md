@@ -208,6 +208,7 @@ The [Finalize jupyter notebook](03_Finalize/02_Finalize.ipynb) takes the merged 
   </tr>
   <tr>
     <td>totStreamflow</td>
+    <td>---</td>
     <td>Total streamflow volume over month</td>
     <td>---</td>
     <td>1D</td>

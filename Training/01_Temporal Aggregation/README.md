@@ -231,7 +231,6 @@ The following metrics will be generated with these scripts:
     <td>totStreamflow</td>
     <td>---</td>
     <td>Total streamflow volume over month</td>
-    <td>---</td>
     <td>m3</td>
   </tr>
   <tr>

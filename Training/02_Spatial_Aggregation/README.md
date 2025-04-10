@@ -247,6 +247,7 @@ The [1-Dimensional Aggregation jupyter notebook](02_Spatial_Aggregation/02_1D_sp
   </tr>
   <tr>
     <td>totStreamflow</td>
+    <td>---</td>
     <td>Total streamflow volume over month</td>
     <td>---</td>
     <td>1D</td>
